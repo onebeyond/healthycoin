@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import Layout from '../components/Layout'
 
 class HealthySystemIndex extends Component {
   render() {
-    return <h3>Welcome to the Healthy System!!</h3>;
+    return (
+      <Layout>
+        <h3>Welcome to the Healthy System!!</h3>;
+      </Layout>
+    );
   };
 };
 
