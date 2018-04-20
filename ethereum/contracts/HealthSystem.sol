@@ -20,16 +20,16 @@ contract HealthSystem {
     }
     
     struct Analysis{
-        Result[] results;
+        Results results;
         address doctor;
         uint score;
         uint reward;
         Date date;
     }
     
-    struct Result{
-        uint indicator; 
-        uint value;
+    struct Results{
+        uint[] indicators; 
+        uint[] values;
     }
     
     struct Date{
@@ -40,6 +40,11 @@ contract HealthSystem {
         
     function HealthSystem() public{
         owner = msg.sender;
+    }
+    
+    modifier isDoctorOrPatient(address user) {
+        require(doctors[user] || patients[user].valid);
+        _;
     }
     
     modifier isDoctor() {
@@ -81,14 +86,11 @@ contract HealthSystem {
          require(patients[patient].valid);
          Analysis storage analysis;
          
-         Result[] results;
-         for (uint i = 0; i < indicators.length; i++){
-            Result memory result;
-            result.indicator = indicators[i];
-            result.value = values[i];
-            results.push(result);
-         }
-         
+     
+        Results memory results;
+        results.indicators = indicators;
+        results.values = values;
+            
          analysis.results = results;
          
          analysis.doctor = msg.sender;
@@ -111,7 +113,6 @@ contract HealthSystem {
         // 2 doctor
         // 3 patient
         // -1 error
-    
     function getRole(address user) returns (Role) {
         if(owner == msg.sender) {
             return Role.Owner;
@@ -126,6 +127,33 @@ contract HealthSystem {
             return Role.Patient;
         }
         throw;
+    }
+    
+    function getAnalysis(address patient,uint myIndex) isDoctorOrPatient(msg.sender) returns (uint[] indicators, uint[] values,uint day, uint month, uint year, uint score, uint reward)  {
+        require(patients[patient].valid);
+        require(patients[patient].history.length > myIndex);
+        Analysis analysis = patients[patient].history[myIndex];
+        return (
+            analysis.results.indicators,
+            analysis.results.values,
+            analysis.date.day,
+            analysis.date.month,
+            analysis.date.year,
+            analysis.score,
+            analysis.reward);
+    }
+    
+    function getNumberAnalysis(address patient) isDoctorOrPatient(msg.sender) returns (uint){
+        require(patients[patient].valid);
+        return patients[patient].history.length;
+    }
+    
+    function getMyNumberAnalysis()  returns (uint){
+        return getNumberAnalysis(msg.sender);
+    }
+    
+    function getMyAnalysis(uint myIndex)  returns (uint[] indicators, uint[] values,uint day, uint month, uint year, uint score, uint reward){
+        return getAnalysis(msg.sender, myIndex);
     }
     
         

@@ -8,7 +8,7 @@ export default props => {
   return (
     <div className={'layout'}>
       <Header role="admin" />
-      <div>{props.children}</div>
+      {props.children}
       <Footer />
     </div>
   );
