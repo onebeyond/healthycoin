@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 const style = {
   backgroundColor: '#F8F8F8',
@@ -22,7 +23,12 @@ export default props => {
   return (
     <div>
       <div style={phantomStyle} />
-      <div style={style}>adsdasda</div>
+      <div style={style}>
+        <li>Un link</li>
+        <li>Un link</li>
+        <li>Un link</li>
+        <li>Un link</li>
+      </div>
     </div>
   );
 };
