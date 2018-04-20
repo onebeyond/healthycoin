@@ -1,0 +1,50 @@
+{
+  "id": "0x87BCDFFDE536Fd56",
+  "doctor_id": "0x536Fd5687BCDFFDE",
+  "score": 85,
+  "reward": 0.000000145,
+  "unit": "ether",
+  "date": "20-05-2018T20:30:12",
+  "indicators": [
+    {
+      "key": "cholesterol",
+      "category": "lipidic",
+      "value": "102"
+    },
+    {
+      "key": "sugar",
+      "category": "general biochemistry",
+      "value": "46"
+    },
+    {
+      "key": "blood_pressure",
+      "category": "general",
+      "value": "78"
+    },
+    {
+      "key": "heart_rate",
+      "category": "general",
+      "value": "75"
+    },
+    {
+      "key": "saturated_fat",
+      "category": "lipidic",
+      "value": "98"
+    },
+    {
+      "key": "hematocrits",
+      "category": "hematology",
+      "value": "1.56"
+    },
+    {
+      "key": "chreatin",
+      "category": "kidney",
+      "value": "65"
+    },
+    {
+      "key": "hemoglobin",
+      "category": "hematology",
+      "value": "65"
+    }
+  ]
+}

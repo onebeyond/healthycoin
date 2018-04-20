@@ -1,0 +1,61 @@
+{
+  "id": "0x87BCDFFDE536Fd56",
+  "items": [
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 85,
+      "reward": 0.000000145,
+      "unit": "ether",
+      "date": "20-05-2018T20:30:12"
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 80,
+      "reward": 0.000000285,
+      "unit": "ether",
+      "date": "20-04-2018T20:30:12"
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 79,
+      "reward": 0.000000762,
+      "unit": "ether",
+      "date": "20-03-2018T20:30:12"
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 92,
+      "reward": 0.000000276,
+      "unit": "ether",
+      "date": "20-02-2018T20:30:12"
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 93,
+      "reward": 0.000000145,
+      "unit": "ether",
+      "date": "20-01-2018T20:30:12"
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 78,
+      "reward": 0.000000145,
+      "unit": "ether",
+      "date": "20-12-2017T20:30:12"
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 90,
+      "reward": 0.000000145,
+      "unit": "ether",
+      "date": "20-11-2017T20:30:12"
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 88,
+      "reward": 0.000000145,
+      "unit": "ether",
+      "date": "20-10-2017T20:30:12"
+    }
+  ]
+}
