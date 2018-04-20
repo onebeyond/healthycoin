@@ -1,23 +1,55 @@
-import React from 'react';
-import { Nav, NavItem } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
-export default props => {
-  const { role } = props;
-
-  const navItemsRole = {
+export default class Header extends Component {
+  navItemsRole = {
     admin: ['Dashboard', 'Records', 'Challenges'],
     patient: ['oneLink', 'twoLink', 'anotherLink']
   };
 
-  return (
-    <Nav bsStyle="pills" activeKey={1}>
-      {navItemsRole[role].map(link => {
-        return (
-          <NavItem eventKey={1} href={'/' + link}>
-            {link}
-          </NavItem>
-        );
-      })}
-    </Nav>
-  );
+  constructor(props) {
+    super(props);
+    this.state = {
+      role: 'admin'
+    }
+  }
+  render() {
+    return (
+      <Navbar fixedTop>
+        <Navbar.Header>
+          <Navbar.Brand>Dashboard</Navbar.Brand>
+          <Navbar.Brand>Welcome </Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav pullRight>
+            <NavItem
+              //active={location.hash === '#/pool-data'}
+              eventKey={2}
+              href="#/pool-data"
+            >
+              Pool Data
+            </NavItem>
+            <NavItem
+              //active={location.hash === '#/glea-logs'}
+              eventKey={3}
+              href="#/glea-logs"
+            >
+              Glea logs
+            </NavItem>
+            <NavItem
+              //active={location.hash === '#/show-secrets'}
+              eventKey={4}
+              href="#/show-secrets"
+            >
+              Secrets
+            </NavItem>
+            <NavItem eventKey={1} /*onClick={profileLogout}*/>
+              Logout
+            </NavItem>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    );
+  }
 };
