@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Nav, NavItem } from 'react-bootstrap';
 
 export default props => {
-  return <h4>This is the header</h4>;
+  const { role } = props;
+
+  const navItemsRole = {
+    admin: ['Dashboard', 'Records', 'Challenges'],
+    patient: ['oneLink', 'twoLink', 'anotherLink']
+  };
+
+  return (
+    <Nav bsStyle="pills" activeKey={1}>
+      {navItemsRole[role].map(link => {
+        return (
+          <NavItem eventKey={1} href={'/' + link}>
+            {link}
+          </NavItem>
+        );
+      })}
+    </Nav>
+  );
 };
