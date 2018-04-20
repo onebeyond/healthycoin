@@ -30,7 +30,6 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.1",
     "rect": "^1.2.1",
-    "semantic-ui-react": "^0.79.1",
     "solc": "^0.4.21",
     "truffle-hdwallet-provider": "0.0.3",
     "victory": "^0.25.7",
