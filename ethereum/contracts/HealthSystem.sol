@@ -13,7 +13,7 @@ contract HealthSystem {
        uint totalReward;
    }
    
-   struct Analysis{
+   struct Analysis {
        Result[] results;
        address doctor;
        uint score;
@@ -21,12 +21,12 @@ contract HealthSystem {
        Date date;
    }
    
-   struct Result{
+   struct Result {
        uint indicator;
        uint value;
    }
    
-   struct Date{
+   struct Date {
        uint year;
        uint month;
        uint day;
