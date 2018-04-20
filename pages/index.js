@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../styles/bootstrap.scss';
+
 import Layout from '../components/Layout'
 
 class HealthySystemIndex extends Component {
