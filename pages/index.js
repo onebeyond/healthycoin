@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/bootstrap.scss';
 
-import Layout from '../components/Layout'
+import Layout from '../components/Layout';
 
 class HealthySystemIndex extends Component {
   render() {
@@ -10,7 +10,7 @@ class HealthySystemIndex extends Component {
         <h3>Welcome to the Healthy System!!</h3>;
       </Layout>
     );
-  };
-};
+  }
+}
 
 export default HealthySystemIndex;

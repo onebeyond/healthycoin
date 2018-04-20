@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
 
 const style = {
-  position: 'absolute',
-  bottom: 0,
-  width: '100%',
+  backgroundColor: '#F8F8F8',
+  borderTop: '1px solid #E7E7E7',
+  textAlign: 'center',
+  padding: '20px',
+  position: 'fixed',
+  left: '0',
+  bottom: '0',
   height: '60px',
-  backgroundColor: '#f5f5f5'
+  width: '100%'
+};
+
+const phantomStyle = {
+  display: 'block',
+  padding: '20px',
+  height: '60px',
+  width: '100%'
 };
 export default props => {
   return (
-    <Panel style={style}>
-      <Panel.Footer>Panel footer</Panel.Footer>
-    </Panel>
+    <div>
+      <div style={phantomStyle} />
+      <div style={style}>adsdasda</div>
+    </div>
   );
 };

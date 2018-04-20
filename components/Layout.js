@@ -8,7 +8,7 @@ export default props => {
   return (
     <div className={'layout'}>
       <Header role="admin" />
-      {props.children}
+      <div style={{ flex: 1 }}>{props.children}</div>
       <Footer />
     </div>
   );
