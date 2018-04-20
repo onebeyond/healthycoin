@@ -60,10 +60,10 @@ export default () => {
 
   return (
     <div>
-      <CategoryPercentage/>
-      <Chart2/>
-      <Chart3/>
-      <Chart4/>
+    //   <CategoryPercentage/>
+    //   <Chart2/>
+    //   <Chart3/>
+    //   <Chart4/>
     </div>
   );
 }
