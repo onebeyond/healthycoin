@@ -24,3 +24,5 @@ yarn-error.log*
 /.next
 ADDRESS
 /.vscode
+.idea
+/.idea
