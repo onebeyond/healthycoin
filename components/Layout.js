@@ -1,11 +1,8 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
-import Header from './Header';
+import styles from './Layout.scss';
 
 export default props => {
   return (
-    <Container>
-      {props.children}
-    </Container>
+    <div className={styles.layout}>{props.children}</div>
   );
 };
