@@ -8,10 +8,9 @@ import './Layout.scss';
 export default props => {
   return (
     <div className={'layout'}>
-     <img className="background-top" src={`./static/background.png`} alt="" />
+     <img className={'background-top'} src={'/static/background.png'} alt="" />
       <Header role={'admin'} />
       <Grid>{props.children}</Grid>
-     
       <Footer />
     </div>
   );

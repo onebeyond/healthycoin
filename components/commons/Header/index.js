@@ -2,18 +2,27 @@ import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 export default class Header extends Component {
-  navItemsRole = {
-    admin: ['Dashboard', 'Records', 'Challenges'],
-    patient: ['oneLink', 'twoLink', 'anotherLink']
-  };
+  navItemsRole = [
+    ['/admin/addDoctor', '/thresholds', '/dashboard'],
+    [''],
+    ['oneLink', 'twoLink', 'anotherLink']
+  ];
 
   constructor(props) {
     super(props);
     this.state = {
-      role: 'admin'
-    }
+      role: 'admin',
+      navActive: [false, false, false]
+    };
+    this.onClickNav = this.onClickNav.bind(this);
+  }
+
+  onClickNav(event) {
+    console.log('Nav');
+    console.log(event);
   }
   render() {
+    const { navActive } = this.state;
     return (
       <Navbar fixedTop>
         <Navbar.Header>
@@ -23,24 +32,27 @@ export default class Header extends Component {
         <Navbar.Collapse>
           <Nav>
             <NavItem
+              onClick={this.onClickNav}
+              active={navActive[0]}
               eventKey={1}
-              href="#/pool-data"
+              href={this.navItemsRole[0][0]}
             >
               DOCTORS
             </NavItem>
             <NavItem
+              onClick={this.onClickNav}
+              active={navActive[1]}
               eventKey={2}
-              href="#/glea-logs"
+              href={this.navItemsRole[0][1]}
             >
               PATIENTS
             </NavItem>
             <NavItem
+              onClick={this.onClickNav}
+              active={navActive[2]}
               eventKey={3}
-              href="#/show-secrets"
+              href={this.navItemsRole[0][2]}
             >
-              THRESHOLDS
-            </NavItem>
-            <NavItem eventKey={4}>
               DASHBOARD
             </NavItem>
           </Nav>
