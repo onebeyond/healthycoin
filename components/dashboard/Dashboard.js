@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Grid, Row, Col, ListGroup, ListGroupItem, Glyphicon } from 'react-bootstrap';
 import {
   VictoryBar, VictoryChart, VictoryAxis, VictoryArea,
   VictoryPolarAxis, VictoryTheme, VictoryPie, VictoryLine, VictoryLegend
@@ -186,12 +186,12 @@ const LinesChart = ({ data }) => (
 
 const Insights = ({ data }) => (
   <ListGroup>
-    <ListGroupItem>Life expectancy 89 years old ^</ListGroupItem>
+    <ListGroupItem>Life expectancy 89 years old <Glyphicon glyph="menu-up" style={{ color: '#50e3c2' }}/></ListGroupItem>
     <ListGroupItem>Smoking 18% daily adult smokers</ListGroupItem>
     <ListGroupItem>Alcohol 9 liters/year</ListGroupItem>
     <ListGroupItem>19% obesity</ListGroupItem>
-    <ListGroupItem>Health spending 16% ^</ListGroupItem>
-    <ListGroupItem>Ethereum rewards 120.5 ^</ListGroupItem>
+    <ListGroupItem>Health spending 16% <Glyphicon glyph="menu-down" style={{color: '#ed684a'}} /></ListGroupItem>
+    <ListGroupItem>Ethereum rewards 120.5 <Glyphicon glyph="menu-up" style={{color: '#50e3c2'}} /></ListGroupItem>
   </ListGroup>
 );
 
@@ -254,16 +254,16 @@ const MonthlyStats = ({ data }) => (
 const MonthlyGoals = ({ data }) => (
   <div>
     <Col xs={3} md={3}>
-      <Wheel data={data.ch} x="month" y="value" />
+      <Wheel data={data.ch} x="month" y="value" colorScale={['#13c1ac', '#1b1b1b']}/>
     </Col>
     <Col xs={3} md={3}>
-      <Wheel data={data.gl} x="month" y="value" />
+      <Wheel data={data.gl} x="month" y="value" colorScale={['#ed4c74', '#1b1b1b']}/>
     </Col>
     <Col xs={3} md={3}>
-      <Wheel data={data.bp} x="month" y="value" />
+      <Wheel data={data.bp} x="month" y="value" colorScale={['#11a0ff', '#1b1b1b']}/>
     </Col>
     <Col xs={3} md={3}>
-      <Wheel data={data.ur} x="month" y="value" />
+      <Wheel data={data.ur} x="month" y="value" colorScale={['#f3a1aa', '#1b1b1b']}/>
     </Col>
   </div>
 );
