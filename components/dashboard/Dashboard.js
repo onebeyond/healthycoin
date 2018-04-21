@@ -289,9 +289,9 @@ const Insights = ({ data }) => (
 
 const WeekStats = ({ data }) => (
   <Row>
-    <Col xs={6} md={6}>
+    <Col xs={7} md={7} className={'dashBorderLeft'}>
       <Row>
-        <div className={'topGraphicTitles'}>
+        <div className={'topGraphicTitles topGraphicTitlesFirst'}>
           <span className={'title'}>465</span>
           <span className={'subtitle'}>Analisys Submited YTD</span>
         </div>
@@ -304,7 +304,7 @@ const WeekStats = ({ data }) => (
         }} />
       </Row>
     </Col>
-    <Col xs={6} md={6}>
+    <Col xs={5} md={5} className={'dashBorderLeft donuthsOld'}>
       <Row>
         <div className={'topGraphicTitles topGraphicTitlesDonuths'}>
           <span className={'title'}>40</span>
@@ -321,7 +321,7 @@ const WeekStats = ({ data }) => (
 
 const MonthlyStats = ({ data }) => (
   <Row>
-    <Col xs={6} md={6}>
+    <Col xs={7} md={7} className={'dashBorderLeft'}>
       <Row>
         <div className={'topGraphicTitles'}>
           <span className={'title'}>4569</span>
@@ -336,12 +336,12 @@ const MonthlyStats = ({ data }) => (
         }} />
       </Row>
     </Col>
-    <Col xs={6} md={6}>
+    <Col xs={5} md={5} className={'dashBorderLeft donuthsOld'}>
       <Row>
         <div className={'topGraphicTitles topGraphicTitlesDonuths'}>
           <span className={'title'}>40</span>
           <span className={'subtitle'}>Today</span>
-        </div>      
+        </div>
       </Row>
       <Row>
         <Doughnut data={donuts2} height={300} width={300} options={{tooltips: donuts2.tooltips}}/>
@@ -375,10 +375,10 @@ export default class Dashboard extends Component {
         <Row className={'show-grid'}>
           <Col xs={6} md={9}>
             <Row>
-              <Col xs={6} md={6}>
+              <Col xs={6} md={6} className={'dashBorderBottom dashBorderTop'}>
                 <WeekStats data={scorePerDay} />
               </Col>
-              <Col xs={6} md={6}>
+              <Col xs={6} md={6} className={'dashBorderBottom dashBorderTop dashBorderRight'}>
                 <MonthlyStats data={scorePerMonth} />
               </Col>
             </Row>
