@@ -12,7 +12,6 @@ const rolesPath = {
   2: 'doctor',
   3: 'patient',
 };
-
 class HealthySystemIndex extends Component {
   static async getInitialProps() {
     const accounts = await web3.eth.getAccounts();
