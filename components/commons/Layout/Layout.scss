@@ -16,4 +16,24 @@ html, body, #__next {
   height: auto;
   @include max-size;
   @include min-height;
+  padding-top: 50px;
 }
+
+.background-top{
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  width: 100vw;
+  margin-top: 45px;
+}
+
+.background-bottom{
+  position: fixed;
+  z-index: -1;
+  bottom: 0;
+  width: 100vw;
+  margin-bottom: 30px;
+  transform: scaleY(-1);
+}
+
+
