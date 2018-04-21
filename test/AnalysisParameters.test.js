@@ -40,5 +40,17 @@ describe ('AnalysisParameters', () => {
     expect(sugar['0']).equal('sugar');
   });
 
-  
+  it('should check the value in range', async () => {
+    await analysisParams.methods.setIndicator('sugar', 20, 100, 5).send({ from: accounts[1], gas: 124487 });
+    
+    let sugarVal = 110;
+    let check = await analysisParams.methods.checkValue(0, sugarVal).call();
+    expect(parseInt(check, 10)).equal(0);
+    sugarVal = 80;
+    check = await analysisParams.methods.checkValue(0, sugarVal).call();
+    expect(parseInt(check, 10)).equal(1);
+    sugarVal = 10;
+    check = await analysisParams.methods.checkValue(0, sugarVal).call();
+    expect(parseInt(check, 10)).equal(2);
+  });
 });
