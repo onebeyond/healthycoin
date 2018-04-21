@@ -35,9 +35,9 @@ export default props => {
       <div style={phantomStyle} />
       <div style={style} className="Fondo">
         <footer>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-3">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-3">
                 <h5>News</h5>
                 <ul>
                   <li>
@@ -51,7 +51,7 @@ export default props => {
                   </li>
                 </ul>
               </div>
-              <div class="col-sm-3 oneBorder">
+              <div className="col-sm-3 oneBorder">
                 <ul className="ulFootter">
                   <li>
                     <a href="#">Sitemap</a>
@@ -64,7 +64,7 @@ export default props => {
                   </li>
                 </ul>
               </div>
-              <div class="col-sm-3 bothBorders">
+              <div className="col-sm-3 bothBorders">
                 <ul className="ulFootter">
                   <li>
                     <a href="#">Terms and conditions</a>
@@ -77,7 +77,7 @@ export default props => {
                   </li>
                 </ul>
               </div>
-              <div class="col-sm-3 info">
+              <div className="col-sm-3 info">
                 <h5>Information</h5>
               </div>
             </div>
