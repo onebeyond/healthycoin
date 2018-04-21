@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import Layout from '../components/Layout';
-import Dashboard from '../components/dashboard/Dashboard';
+import Layout from '../../components/commons/Layout/index';
+import AddDoctor from '../../components/admin/add-doctor/AddDoctor'
 
-class DashboardPage extends Component {
-  render() {
-    return (
-      <Layout>
-        <addDoctor/>;
-      </Layout>
-    );
-  };
+export default class AddDoctorPage extends Component {
+    render() {
+      return (
+        <Layout>
+          <AddDoctor/>
+        </Layout>
+      );
+    };
 };
-
-export default DashboardPage;
