@@ -339,7 +339,8 @@ const MonthlyStats = ({ data }) => (
         <div className={'topGraphicTitles topGraphicTitlesDonuths'}>
           <span className={'title'}>40</span>
           <span className={'subtitle'}>Today</span>
-        </div>      </Row>
+        </div>      
+      </Row>
       <Row>
         <Doughnut data={donuts2} height={300} width={300} options={{tooltips: donuts2.tooltips}}/>
       </Row>
@@ -401,8 +402,8 @@ export default class Dashboard extends Component {
           <Col xs={6} md={3}>
             <Row>
               <Col xs={12} md={12}>
-                <h4>+1.6 ETH</h4>
-                <h5>Rewards last month</h5>
+                <span className={'ether-rewards'}>+1.6 eth</span>
+                <span className={'ether-rewards-title'}>Rewards last month</span>
               </Col>
             </Row>
             <Row>
