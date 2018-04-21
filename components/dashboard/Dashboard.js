@@ -232,6 +232,7 @@ const LinesChart = ({ data }) => (
   <VictoryChart>
     <VictoryAxis
       dependentAxis
+      domain={[0, 100]}
       style={{
         axis: { stroke: 'none' },
         ticks: { stroke: '#c8c8c8' },
@@ -255,8 +256,10 @@ const LinesChart = ({ data }) => (
     <VictoryLine data={data} x="month" y="value" style={{ data: { stroke: "#0c9bf9" }}} />
     <VictoryLine data={data2} x="month" y="value" style={{ data: { stroke: "#ed684a" }}} />
     <VictoryLine data={data3} x="month" y="value" style={{ data: { stroke: "#57c9c1" }}} />
-    <VictoryLegend x={125} y={10}
+    <VictoryLegend
+      title="Overall"
       centerTitle
+      titleOrientation="left"
       orientation="horizontal"
       gutter={20}
       data={[
@@ -267,8 +270,7 @@ const LinesChart = ({ data }) => (
       style={{
         data: { fill: "blue", stroke: "black", strokeWidth: .5 },
         labels: { fill: "black", fontSize: 8 },
-        // border: { stroke: "black" },
-        title: { fontSize: 8 }
+        title: { fontSize: 12 }
       }}
     />
   </VictoryChart>
@@ -382,12 +384,7 @@ export default class Dashboard extends Component {
             </Row>
             <Row>
               <Col xs={8} md={8}>
-                <Row>
-                  <p>Overall</p>
-                </Row>
-                <Row>
-                  <LinesChart data={scorePerMonth} />
-                </Row>
+                <LinesChart data={scorePerMonth} />
               </Col>
               <Col xs={4} md={4}>
                 <Row>
