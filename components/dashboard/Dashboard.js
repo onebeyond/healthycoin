@@ -6,6 +6,38 @@ import {
 } from 'victory';
 import './style.scss';
 
+import {Doughnut} from 'react-chartjs-2';
+
+
+const donut = {
+  labels: [
+    ' 20 days',
+    ' 10 days',
+  ],
+  datasets: [{
+    data: [60, 40],
+    backgroundColor: [
+      '#FF6384',
+      '#36A2EB'
+    ],
+    hoverBackgroundColor: [
+      '#FF6384',
+      '#36A2EB'
+    ]
+  }],
+  tooltips: {
+    callbacks: {
+      label: function(tooltipItem, data) {
+        const dataset = data.datasets[tooltipItem.datasetIndex];
+        const total = dataset.data.reduce((previousValue, currentValue) => previousValue + currentValue);
+        const currentValue = dataset.data[tooltipItem.index];
+        const precentage = Math.floor(((currentValue/total) * 100)+0.5);
+        return ' ' + precentage + '%';
+      }
+    }
+  }
+};
+
 const scorePerMonth = [
   {month: 1, value: 76},
   {month: 2, value: 50},
@@ -117,7 +149,7 @@ const MonthlyStats = ({ data }) => (
         <p>59 this month</p>
       </Row>
       <Row className="show-grid">
-        <Wheel data={data} x="month" y="value"/>
+        <Doughnut data={donut} height={300} width={300} options={{tooltips: donut.tooltips}}/>
       </Row>
     </Col>
   </Row>
