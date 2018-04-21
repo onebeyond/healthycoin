@@ -8,42 +8,49 @@
   "indicators": [
     {
       "key": "cholesterol",
-      "category": "lipidic",
+      "category": "lipidic A",
+      "range": "67.755 | 1.924",
       "value": "102"
     },
     {
       "key": "sugar",
       "category": "general biochemistry",
+      "range": "C18:2",
       "value": "46"
     },
     {
       "key": "blood_pressure",
       "category": "general",
+      "range": "7.2 to 7.8 mmol/L",
       "value": "78"
     },
     {
       "key": "heart_rate",
       "category": "general",
+      "range": "120 | 80 mm Hg",
       "value": "75"
     },
     {
       "key": "saturated_fat",
-      "category": "lipidic",
-      "value": "98"
+      "category": "lipidic B",
+      "range": "38 % | 56%"
     },
     {
       "key": "hematocrits",
       "category": "hematology",
+      "range": "0.6–1.1 mg/dL",
       "value": "1.56"
     },
     {
       "key": "chreatin",
       "category": "kidney",
+      "range": "30 | 70",
       "value": "65"
     },
     {
       "key": "hemoglobin",
       "category": "hematology",
+      "range": "60 | 100",
       "value": "65"
     }
   ]

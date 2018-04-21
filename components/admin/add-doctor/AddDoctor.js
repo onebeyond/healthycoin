@@ -32,18 +32,19 @@ export default class AddDoctor extends  React.Component {
     onSubmit = async (event) => {
         event.preventDefault;
     
-        const campaign = Campaign(this.props.address);
+        //const campaign = Campaign(this.props.address);
     
         this.setState({ loading: true, errorMessage: '' })
     
         try {
           const accounts = await web3.eth.getAccounts();
-          await campaign.methods.contribute().send({
+         
+         /* await campaign.methods.contribute().send({
             from: accounts[0],
             value: web3.utils.toWei(this.state.value, 'ether'),
-          });
+          });*/
     
-          Router.replaceRoute(`/campaigns/${this.props.address}`);
+          //Router.replaceRoute(`/campaigns/${this.props.address}`);
         } catch (err) {
           this.setState({ errorMessage: err.message });
         }
