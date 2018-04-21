@@ -12,6 +12,8 @@ import {
 } from 'react-bootstrap';
 import ListAnalysis from '../../admin/analysis-metrics';
 import index from '../../admin/analysis-metrics';
+import web3 from '../../../ethereum/web3';
+import HealthSystem from '../../../ethereum/healthSystem';
 
 const matchArr = {
   1: 'cholesterol',
@@ -42,7 +44,24 @@ export default class SubmitAnalisys extends React.Component {
     };
   }
 
-  handleSubmit(event) {
+  /* onSubmit = async (event) => {
+   event.preventDefault();
+
+   this.setState({ loading: true });
+
+   try {
+     const accounts = await web3.eth.getAccounts();
+     await HealthSystem.methods
+       .addAdmin(this.state.value)
+       .send({ from: accounts[0] });
+   } catch (err) {
+     console.log(err);
+   }
+
+   this.setState({ loading: false });
+ } */
+
+  async handleSubmit(event) {
     event.preventDefault();
     const stateShallow = this.state;
     const indicators = Object.keys(matchArr);
@@ -53,7 +72,30 @@ export default class SubmitAnalisys extends React.Component {
         }
       })
       .filter(key => key != undefined);
-    return;
+    const addressPatient = stateShallow.patient_address;
+    const year = stateShallow.patient_date.substring(0, 4);
+    const month = stateShallow.patient_date.substring(6, 7);
+    const day = stateShallow.patient_date.substring(9, 10);
+    const score = Math.floor(Math.random() * 6) + 1;
+    const reward = Math.floor(Math.random() * 6) + 1;
+
+    try {
+      const accounts = await web3.eth.getAccounts();
+      await HealthSystem.methods
+        .addAnalisys(
+          indicators,
+          values,
+          addressPatient,
+          day,
+          month,
+          year,
+          score,
+          reward
+        )
+        .send({ from: accounts[0] });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   handleInputsChange(event) {
@@ -70,7 +112,7 @@ export default class SubmitAnalisys extends React.Component {
       <div>
         <Row className="show-grid">
           <form onSubmit={this.handleSubmit}>
-            <FormGroup controlId="formBasicText">
+            <FormGroup>
               <ControlLabel>Submit Analysis</ControlLabel>
               <FormControl
                 type="text"
@@ -84,7 +126,7 @@ export default class SubmitAnalisys extends React.Component {
                 Please be sure partient is an ethereum address.
               </HelpBlock>
               <FormControl
-                type="text"
+                type="date"
                 placeholder="Date"
                 name="patient_date"
                 value={this.state.patient_date}
