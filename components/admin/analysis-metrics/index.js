@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
+import listItem from '../../commons/ListAnalysis';
 import './style.scss';
 
+import mockAnalysis from '../../../server/mocks/user-analysis.json';
+
 export default () => {
+  const analysisItems = mockAnalysis['indicators'].map(indicator => (
+    <listItem indicator={indicator} />
+  ));
   return (
     <div>
       <ListGroup>
-        <ListGroupItem>Item 1</ListGroupItem>
-        <ListGroupItem>Item 2</ListGroupItem>
-        <ListGroupItem>...</ListGroupItem>
+        <analysisItems />
       </ListGroup>;
     </div>
   );
