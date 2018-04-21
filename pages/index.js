@@ -7,7 +7,7 @@ class HealthySystemIndex extends Component {
   render() {
     return (
       <Layout>
-        <h3>Welcome to the Healthy System!!</h3>;
+        <h3>Welcome to the Healthy System!!</h3>
       </Layout>
     );
   };

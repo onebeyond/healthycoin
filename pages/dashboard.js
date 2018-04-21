@@ -6,7 +6,7 @@ export default class DashboardPage extends Component {
   render() {
     return (
       <Layout>
-        <Dashboard/>;
+        <Dashboard/>
       </Layout>
     );
   };
