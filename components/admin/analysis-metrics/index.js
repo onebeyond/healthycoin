@@ -7,21 +7,30 @@ import mockAnalysis from '../../../server/mocks/user-analysis.json';
 
 export default () => {
   return (
-    <div>
-      <ListGroup style={{ marginTop: '20px' }}>
+    <div
+      style={{
+        marginTop: '20px'
+      }}
+    >
+      <ListGroup>
         {mockAnalysis['indicators'].map(indicator => (
-          <ListGroupItem>
+          <ListGroupItem id="listAnalysisItem">
+            <div
+              style={{
+                borderRadius: '10px',
+                backgroundColor: '#b6e1fd'
+              }}
+            >
+              {indicator.category}
+            </div>
             <div className="row">
-              <div className="col-sm-3">
+              <div className="col-sm-4">
                 <p>{indicator.key}</p>
               </div>
-              <div className="col-sm-3">
-                <p>{indicator.category}</p>
-              </div>
-              <div className="col-sm-3">
+              <div className="col-sm-4">
                 <p>{indicator.value}</p>
               </div>
-              <div className="col-sm-3">
+              <div className="col-sm-4">
                 <p>Here the input</p>
               </div>
             </div>
