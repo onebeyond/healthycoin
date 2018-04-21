@@ -12,7 +12,8 @@ export default class AddDoctor extends  React.Component {
     this.getValidationState = this.getValidationState.bind(this);
 
     this.state = {
-      value: ''
+      value: '',
+      loading: false,
     };
   }
 
@@ -37,6 +38,9 @@ export default class AddDoctor extends  React.Component {
 
   onSubmit = async (event) => {
     event.preventDefault();
+
+    this.setState({ loading: true });
+
     try {
       const accounts = await web3.eth.getAccounts();
       await HealthSystem.methods
@@ -45,6 +49,8 @@ export default class AddDoctor extends  React.Component {
     } catch (err) {
       console.log(err);
     }
+
+    this.setState({ loading: false });
   }
 
   render() {
@@ -74,7 +80,7 @@ export default class AddDoctor extends  React.Component {
               <HelpBlock>Please be sure your address is an ethereum address .</HelpBlock>
             </FormGroup>
             <Button bsStyle="info" type="submit">
-              <Glyphicon glyph="refresh" className={'animateSpinner'} /> Add Doctor
+              {this.state.loading ? <Glyphicon glyph="refresh" className={'animateSpinner'} /> : ''} Add Doctor
             </Button>
           </form>
         </Row>
