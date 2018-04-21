@@ -19,7 +19,7 @@ export default class AddDoctor extends  React.Component {
   async componentDidMount(){
     const accounts = await web3.eth.getAccounts();
     console.log(accounts);
-    let role = await HealthSystem.methods.getRole(accounts[0]).call();
+    let role = await HealthSystem.methods.getMyRole().call({ from: accounts[0] });
     console.log(role);
   }
 
@@ -35,11 +35,23 @@ export default class AddDoctor extends  React.Component {
     this.setState({ value: e.target.value });
   }
 
+  onSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const accounts = await web3.eth.getAccounts();
+      await HealthSystem.methods
+        .addDoctor(this.state.value)
+        .send({ from: accounts[0] });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   render() {
     return (
       <div>
         <Row className="show-grid">
-          <form
+          <form onSubmit={this.onSubmit}
             style={{
               margin: '50px',
               background: '#ffffff90',
