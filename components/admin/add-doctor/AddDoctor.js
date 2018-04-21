@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, FormGroup, FormControl, HelpBlock, ControlLabel, Button} from 'react-bootstrap';
+import { Row, FormGroup, FormControl, HelpBlock, ControlLabel, Button, Glyphicon} from 'react-bootstrap';
 import web3 from '../../../ethereum/web3';
 import HealthSystem from '../../../ethereum/healthSystem';
 
@@ -61,7 +61,9 @@ export default class AddDoctor extends  React.Component {
               <FormControl.Feedback />
               <HelpBlock>Please be sure your address is an ethereum address .</HelpBlock>
             </FormGroup>
-            <Button bsStyle="info" type="submit">Add Doctor</Button>
+            <Button bsStyle="info" type="submit">
+              <Glyphicon glyph="refresh" className={'animateSpinner'} /> Add Doctor
+            </Button>
           </form>
         </Row>
       </div>
