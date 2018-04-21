@@ -44,23 +44,6 @@ export default class SubmitAnalisys extends React.Component {
     };
   }
 
-  /* onSubmit = async (event) => {
-   event.preventDefault();
-
-   this.setState({ loading: true });
-
-   try {
-     const accounts = await web3.eth.getAccounts();
-     await HealthSystem.methods
-       .addAdmin(this.state.value)
-       .send({ from: accounts[0] });
-   } catch (err) {
-     console.log(err);
-   }
-
-   this.setState({ loading: false });
- } */
-
   async handleSubmit(event) {
     event.preventDefault();
     const stateShallow = this.state;
@@ -82,7 +65,10 @@ export default class SubmitAnalisys extends React.Component {
     try {
       const accounts = await web3.eth.getAccounts();
       await HealthSystem.methods
-        .addAnalisys(
+        .addPatient(addressPatient)
+        .send({ from: accounts[0] });
+      await HealthSystem.methods
+        .addAnalysis(
           indicators,
           values,
           addressPatient,
