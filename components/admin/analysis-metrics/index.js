@@ -4,7 +4,8 @@ import './style.scss';
 
 import mockAnalysis from '../../../server/mocks/user-analysis.json';
 
-export default () => {
+export default props => {
+  let { handleChange } = props;
   return (
     <div
       style={{
@@ -35,8 +36,9 @@ export default () => {
                 <div className="col-sm-4">
                   <FormControl
                     type="text"
-                    placeholder="Patient"
-                    onChange={this.handleChange}
+                    placeholder="Quantity"
+                    name={indicator.key}
+                    onChange={handleChange}
                     id="customFormControl"
                   />
                 </div>

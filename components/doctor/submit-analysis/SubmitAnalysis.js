@@ -11,46 +11,73 @@ import {
   Button
 } from 'react-bootstrap';
 import ListAnalysis from '../../admin/analysis-metrics';
+import index from '../../admin/analysis-metrics';
 
+const matchArr = {
+  1: 'cholesterol',
+  2: 'sugar',
+  3: 'blood_pressure',
+  4: 'heart_rate',
+  5: 'saturated_fat',
+  6: 'hematocrits',
+  7: 'chreatin',
+  8: 'hemoglobin'
+};
 export default class SubmitAnalisys extends React.Component {
   constructor(props, context) {
     super(props, context);
-
-    this.handleChange = this.handleChange.bind(this);
-    this.getValidationState = this.getValidationState.bind(this);
-
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputsChange = this.handleInputsChange.bind(this);
     this.state = {
-      value: ''
+      patient_address: '',
+      patient_date: '',
+      cholesterol: '',
+      sugar: '',
+      blood_pressure: '',
+      heart_rate: '',
+      saturated_fat: '',
+      hematocrits: '',
+      chreatin: '',
+      hemoglobin: ''
     };
   }
 
-  getValidationState() {
-    const length = this.state.value.length;
-    if (length == 42) return 'success';
-    else if (length == 0) return 'warning';
-    else if (length < 42) return 'error';
-    return null;
+  handleSubmit(event) {
+    event.preventDefault();
+    const stateShallow = this.state;
+    const indicators = Object.keys(matchArr);
+    const values = Object.keys(stateShallow)
+      .map(function(key, index) {
+        if (key !== 'patient_address' && key !== 'patient_date') {
+          return parseInt(stateShallow[key]);
+        }
+      })
+      .filter(key => key != undefined);
+    return;
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
+  handleInputsChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState(() => {
+      return { [name]: value };
+    });
   }
 
   render() {
     return (
       <div>
         <Row className="show-grid">
-          <form>
-            <FormGroup
-              controlId="formBasicText"
-              validationState={this.getValidationState()}
-            >
+          <form onSubmit={this.handleSubmit}>
+            <FormGroup controlId="formBasicText">
               <ControlLabel>Submit Analysis</ControlLabel>
               <FormControl
                 type="text"
-                value={this.state.value}
                 placeholder="Patient"
-                onChange={this.handleChange}
+                name="patient_address"
+                value={this.state.patient_address}
+                onChange={this.handleInputsChange}
               />
               <FormControl.Feedback />
               <HelpBlock>
@@ -58,13 +85,14 @@ export default class SubmitAnalisys extends React.Component {
               </HelpBlock>
               <FormControl
                 type="text"
-                value={this.state.value}
                 placeholder="Date"
-                onChange={this.handleChange}
+                name="patient_date"
+                value={this.state.patient_date}
+                onChange={this.handleInputsChange}
               />
               <FormControl.Feedback />
               <HelpBlock>Format Date YYYY/MM/DD</HelpBlock>
-              <ListAnalysis />
+              <ListAnalysis handleChange={this.handleInputsChange} />
             </FormGroup>
             <Button className="pull-right" bsStyle="info" type="submit">
               Submit Analysis
