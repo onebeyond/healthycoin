@@ -8,15 +8,15 @@ import './style.scss';
 export default class AddDoctor extends  React.Component {
 
   constructor(props, context) {
-  super(props, context);
-
+    super(props, context);
     this.handleChange = this.handleChange.bind(this);
     this.getValidationState = this.getValidationState.bind(this);
-
     this.state = {
-      value: ''
-      };
-    }
+      value: '',
+      loading: false,
+      errorMessage: ''
+    };
+  }
 
   getValidationState() {
     const length = this.state.value.length;
@@ -26,31 +26,61 @@ export default class AddDoctor extends  React.Component {
     return null;
   }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  }
+  onSubmit = async (event) => {
+      event.preventDefault;
+
+      //const campaign = Campaign(this.props.address);
+
+      this.setState({ loading: true, errorMessage: '' })
+
+      try {
+        const accounts = await web3.eth.getAccounts();
+
+       /* await campaign.methods.contribute().send({
+          from: accounts[0],
+          value: web3.utils.toWei(this.state.value, 'ether'),
+        });*/
+
+        //Router.replaceRoute(`/campaigns/${this.props.address}`);
+      } catch (err) {
+        this.setState({ errorMessage: err.message });
+      }
+
+      this.setState({ loading: false, value: ''})
+
+  };
+
 
   render() {
     return (
-      <Row className={'add-doctor'}>
-        <form>
-          <FormGroup
-            controlId={'formBasicText'}
-            validationState={this.getValidationState()}
+      <div>
+        <Row className="show-grid">
+          <form
+            style={{
+              margin: '50px',
+              background: '#ffffff90',
+              padding: '50px',
+              borderRadius: '15px'
+            }}
           >
-            <ControlLabel>Manage Doctors</ControlLabel>
-            <FormControl
-              type={'text'}
+            <FormGroup
+                controlId="formBasicText"
+                validationState={this.getValidationState()}
+            >
+              <ControlLabel>Manage Doctors</ControlLabel>
+              <FormControl
+              type="text"
               value={this.state.value}
-              placeholder={'Enter address'}
+              placeholder="Enter address"
               onChange={this.handleChange}
-            />
-            <FormControl.Feedback />
-            <HelpBlock>Please be sure your address is an ethereum address .</HelpBlock>
-          </FormGroup>
-          <Button bsStyle={'info'} type={'submit'}>Add Doctor</Button>
-        </form>
-      </Row>
+              />
+              <FormControl.Feedback />
+              <HelpBlock>Please be sure your address is an ethereum address .</HelpBlock>
+            </FormGroup>
+            <Button bsStyle="info" type="submit">Add Doctor</Button>
+          </form>
+        </Row>
+    </div>
     );
   }
 }

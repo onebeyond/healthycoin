@@ -23,7 +23,6 @@
 
 #Footer{
   bottom: 0;
-  position: fixed;
   width: 100vw;
   font-size: 16px;
   font-weight: 600;
@@ -35,4 +34,5 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  height: 150px;
 }

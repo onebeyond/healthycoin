@@ -23,6 +23,7 @@ body,
   @include max-size;
   @include min-height;
   padding-top: 50px;
+  min-height: calc( 100vh - 80px)
 }
 
 .background-top{
@@ -41,5 +42,3 @@ body,
   margin-bottom: 30px;
   transform: scaleY(-1);
 }
-
-
