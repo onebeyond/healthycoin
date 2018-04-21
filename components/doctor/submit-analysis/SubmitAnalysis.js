@@ -35,7 +35,7 @@ export default class SubmitAnalisys extends  React.Component {
                     controlId="formBasicText"
                     validationState={this.getValidationState()}
                 >
-                    <ControlLabel>Manage Doctors</ControlLabel>
+                    <ControlLabel>Submit Analysis</ControlLabel>
                     <FormControl
                     type="text"
                     value={this.state.value}

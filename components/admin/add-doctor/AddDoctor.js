@@ -30,7 +30,10 @@ export default class AddDoctor extends  React.Component {
         return (
             <div>
             <Row className="show-grid">
-            <form>
+            <form style={{    margin: '50px',
+    background: '#ffffff90',
+    padding: '50px',
+    borderRadius: '15px'}}>
                 <FormGroup
                     controlId="formBasicText"
                     validationState={this.getValidationState()}
