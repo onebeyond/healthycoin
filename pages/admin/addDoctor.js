@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../styles/bootstrap.scss';
+
 import Layout from '../components/Layout';
 import Dashboard from '../components/dashboard/Dashboard';
 
