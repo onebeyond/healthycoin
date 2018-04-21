@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/commons/Layout/index';
 import Dashboard from '../components/dashboard/Dashboard';
 
-class DashboardPage extends Component {
+export default class DashboardPage extends Component {
   render() {
     return (
       <Layout>
-        <Dashboard/>;
+        <Dashboard/>
       </Layout>
     );
   };
 };
-
-export default DashboardPage;

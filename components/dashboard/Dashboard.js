@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 import {
   VictoryBar, VictoryChart, VictoryAxis, VictoryArea,
-  VictoryPolarAxis, VictoryTheme, VictoryPie, VictoryLine
+  VictoryPolarAxis, VictoryTheme, VictoryPie, VictoryLine, VictoryLegend
 } from 'victory';
 import './style.scss';
 
@@ -22,10 +22,10 @@ const scorePerMonth = [
 ];
 
 const data2 = [
-  {month: 1, value: 7000},
-  {month: 2, value: 7500},
-  {month: 3, value: 8250},
-  {month: 4, value: 10000}
+  {month: 1, value: 70},
+  {month: 2, value: 75},
+  {month: 3, value: 82},
+  {month: 4, value: 100}
 ];
 
 export default () => {
@@ -65,47 +65,85 @@ export default () => {
   //   <VictoryPie innerRadius={100} data={data} x="month" y="value"/>
   // );
 
-  // const Chart4 = () => (
-  //   <VictoryChart>
-  //     <VictoryLine data={data} x="month" y="value"/>
-  //     <VictoryLine data={data2} x="month" y="value"/>
-  //   </VictoryChart>
-  // );
+  const LinesChart = ({ data }) => (
+    <VictoryChart>
+      <VictoryLine data={data} x="month" y="value"/>
+      <VictoryLine data={data2} x="month" y="value"/>
+      <VictoryLegend x={125} y={10}
+        orientation="horizontal"
+        gutter={20}
+        colorScale={["navy", "blue", "cyan"]}
+        data={[
+          { name: "Cat 1" }, { name: "Cat 2" }
+        ]}
+      />
+    </VictoryChart>
+  );
+
+  const Insights = ({ data }) => (
+      <ListGroup>
+        <ListGroupItem>Life expectancy 89 years old ^</ListGroupItem>
+        <ListGroupItem>Smoking 18% daily adult smokers</ListGroupItem>
+        <ListGroupItem>Alcohol 9 liters/year</ListGroupItem>
+        <ListGroupItem>19% obesity</ListGroupItem>
+        <ListGroupItem>Health spending 16% ^</ListGroupItem>
+        <ListGroupItem>Ethereum rewards 120.5 ^</ListGroupItem>
+      </ListGroup>
+  );
 
   const MonthlyStats = ({ data }) => (
-    <Grid>
-      <Row className="show-grid">
-        <Col xs={12} md={8}>
-          <Row className="show-grid">
-            <p>465</p>
-          </Row>
-          <Row className="show-grid">
-            <CategoryPercentage data={data}/>
-          </Row>
-        </Col>
-        <Col xs={6} md={4}>
-          <Row className="show-grid">
-            <p>59 this month</p>
-          </Row>
-          <Row className="show-grid">
-            <Wheel data={data} x="month" y="value"/>
-          </Row>
-        </Col>
-      </Row>
-    </Grid>
+    <Row className="show-grid">
+      <Col xs={6} md={6}>
+        <Row className="show-grid">
+          <p>465</p>
+        </Row>
+        <Row className="show-grid">
+          <CategoryPercentage data={data}/>
+        </Row>
+      </Col>
+      <Col xs={6} md={6}>
+        <Row className="show-grid">
+          <p>59 this month</p>
+        </Row>
+        <Row className="show-grid">
+          <Wheel data={data} x="month" y="value"/>
+        </Row>
+      </Col>
+    </Row>
   );
 
   return (
-    <div>
       <Grid>
         <Row className="show-grid">
-          <MonthlyStats data={scorePerMonth}/>
+          <Col xs={6} md={6}>
+            <MonthlyStats data={scorePerMonth}/>
+          </Col>
+          <Col xs={6} md={6}>
+            <MonthlyStats data={scorePerMonth} />
+          </Col>
         </Row>
-      </Grid>
-      {/* <CategoryPercentage/>
-      <Chart2/>
-      <Chart3/>
-      <Chart4/> */}
-    </div>
+        <Row className="show-grid">
+          <Col xs={8} md={8}>
+            <Row className="show-grid">
+              <p>Overall</p>
+            </Row>
+            <Row className="show-grid">
+              <LinesChart data={scorePerMonth} />
+            </Row>
+          </Col>
+          <Col xs={4} md={4}>
+            <Row className="show-grid">
+              <p>At a glance 2017</p>
+            </Row>
+            <Row className="show-grid">
+              <Insights data={scorePerMonth} />
+            </Row>
+          </Col>
+        </Row>
+        </Grid>
+      // {/* <CategoryPercentage/>
+      // <Chart2/>
+      // <Chart3/>
+      // <Chart4/> */}
   );
 }
