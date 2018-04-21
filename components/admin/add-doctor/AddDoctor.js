@@ -18,6 +18,10 @@ export default class AddDoctor extends  React.Component {
     };
   }
 
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
+
   getValidationState() {
     const length = this.state.value.length;
     if (length == 42) return 'success';
