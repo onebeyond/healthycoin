@@ -24,10 +24,25 @@ contract AnalysisParameters {
     mapping(uint => Indicator) indicators;
     uint index = 0;
 
-    function setIndicator(string _name, uint _min, uint _max, uint _weight){
+    modifier minMaxCheck (uint min, uint max) {
+        require(max > min);
+        _;
+    }
+
+    function setIndicator(string _name, uint _min, uint _max, uint _weight) public minMaxCheck(_min, _max) {
         Indicator memory indicator = Indicator(_name, _min, _max, _weight);
         indicators[index] = indicator;
         index ++;
+    }
+
+    function getIndicator(uint _index) public view returns (string, uint, uint, uint) {
+        Indicator storage indicator = indicators[_index];
+
+        return (indicator.name, indicator.min, indicator.max, indicator.weight);
+    }
+
+    function numIndicators() public view returns (uint) {
+        return index;
     }
 
     function updateMin(uint _index, uint _min){
@@ -47,7 +62,7 @@ contract AnalysisParameters {
     //     return indicators[_index];
     // }
 
-    function checkValue(uint _index, uint _value) public returns (Compared){
+    function checkValue(uint _index, uint _value) public view returns (Compared){
         require(_index <= index);
         if (_value < indicators[_index].min) {
             return Compared.Low;
