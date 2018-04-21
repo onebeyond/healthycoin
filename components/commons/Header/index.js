@@ -17,35 +17,31 @@ export default class Header extends Component {
     return (
       <Navbar fixedTop>
         <Navbar.Header>
-          <Navbar.Brand>Dashboard</Navbar.Brand>
-          <Navbar.Brand>Welcome </Navbar.Brand>
+          <Navbar.Brand>ICONO</Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          <Nav pullRight>
+          <Nav>
             <NavItem
-              //active={location.hash === '#/pool-data'}
-              eventKey={2}
+              eventKey={1}
               href="#/pool-data"
             >
-              Pool Data
+              DOCTORS
             </NavItem>
             <NavItem
-              //active={location.hash === '#/glea-logs'}
-              eventKey={3}
+              eventKey={2}
               href="#/glea-logs"
             >
-              Glea logs
+              PATIENTS
             </NavItem>
             <NavItem
-              //active={location.hash === '#/show-secrets'}
-              eventKey={4}
+              eventKey={3}
               href="#/show-secrets"
             >
-              Secrets
+              THRESHOLDS
             </NavItem>
-            <NavItem eventKey={1} /*onClick={profileLogout}*/>
-              Logout
+            <NavItem eventKey={4}>
+              DASHBOARD
             </NavItem>
           </Nav>
         </Navbar.Collapse>
