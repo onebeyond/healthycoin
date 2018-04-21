@@ -124,22 +124,45 @@ const scorePerMonth = [
   {month: 1, value: 76},
   {month: 2, value: 50},
   {month: 3, value: 86},
-  {month: 4, value: 57},
+  {month: 4, value: 67},
   {month: 5, value: 98},
   {month: 6, value: 67},
-  {month: 7, value: 57},
+  {month: 7, value: 77},
   {month: 8, value: 76},
-  {month: 9, value: 58},
+  {month: 9, value: 88},
   {month: 10, value: 99},
   {month: 11, value: 67},
   {month: 12, value: 98},
 ];
 
 const data2 = [
-  {month: 1, value: 70},
-  {month: 2, value: 75},
+  {month: 1, value: 10},
+  {month: 2, value: 45},
   {month: 3, value: 82},
-  {month: 4, value: 100}
+  {month: 4, value: 55},
+  {month: 5, value: 81},
+  {month: 6, value: 69},
+  {month: 7, value: 46},
+  {month: 8, value: 50},
+  {month: 9, value: 58},
+  {month: 10, value: 70},
+  {month: 11, value: 56},
+  {month: 12, value: 88},
+];
+
+const data3 = [
+  { month: 1, value: 20 },
+  { month: 2, value: 15 },
+  { month: 3, value: 22 },
+  { month: 4, value: 35 },
+  { month: 5, value: 21 },
+  { month: 6, value: 19 },
+  { month: 7, value: 16 },
+  { month: 8, value: 20 },
+  { month: 9, value: 28 },
+  { month: 10, value: 30 },
+  { month: 11, value: 26 },
+  { month: 12, value: 28 },
 ];
 
 const scoreGoals = {
@@ -216,14 +239,37 @@ const SpiderChart = ({ props }) => (
 
 const LinesChart = ({ data }) => (
   <VictoryChart>
-    <VictoryLine data={data} x="month" y="value"/>
-    <VictoryLine data={data2} x="month" y="value"/>
+    <VictoryAxis
+      dependentAxis
+      style={{
+        axis: { stroke: 'none' },
+        ticks: { stroke: '#c8c8c8' },
+        tickLabels: { fontSize: 8, opacity: .3 },
+        grid: {
+          stroke: (t) => '#c8c8c8'
+        }
+      }}
+    />
+    <VictoryAxis
+      tickFormat={(t) => timeToWord.month[t]}
+      style={{
+        axis: { stroke: '#d0d0d0' },
+        ticks: { stroke: 'none' },
+        tickLabels: { fontSize: 10, opacity: .3 },
+        grid: {
+          stroke: (t) => 'transparent'
+        }
+      }}
+    />
+    <VictoryLine data={data} x="month" y="value" style={{ data: { stroke: "#0c9bf9" }}} />
+    <VictoryLine data={data2} x="month" y="value" style={{ data: { stroke: "#ed684a" }}} />
+    <VictoryLine data={data3} x="month" y="value" style={{ data: { stroke: "#57c9c1" }}} />
     <VictoryLegend x={125} y={10}
                    orientation="horizontal"
                    gutter={20}
                    colorScale={["navy", "blue", "cyan"]}
                    data={[
-                     { name: "Cat 1" }, { name: "Cat 2" }
+                     { name: "Thresholds achievements" }, { name: "National spent" }, { name: "Ethereum rewards" }
                    ]}
     />
   </VictoryChart>
