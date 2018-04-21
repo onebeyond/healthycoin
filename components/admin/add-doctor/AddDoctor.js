@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   Row, FormGroup, FormControl, HelpBlock, ControlLabel, Button
 } from 'react-bootstrap';
 
 import './style.scss';
 
-export default class AddDoctor extends  React.Component {
+export default class AddDoctor extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -68,8 +68,8 @@ export default class AddDoctor extends  React.Component {
             }}
           >
             <FormGroup
-                controlId="formBasicText"
-                validationState={this.getValidationState()}
+              controlId="formBasicText"
+              validationState={this.getValidationState()}
             >
               <ControlLabel>Manage Doctors</ControlLabel>
               <FormControl
