@@ -22,25 +22,24 @@ body,
   height: auto;
   @include max-size;
   @include min-height;
+  padding-top: 50px;
 }
 
-.ulFootter {
-  list-style-type: none;
+.background-top{
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  width: 100vw;
+  margin-top: 45px;
 }
 
-.Line {
-  width: 3px;
-  height: 72px;
-  border: solid 1px #ffffff;
+.background-bottom{
+  position: fixed;
+  z-index: -1;
+  bottom: 0;
+  width: 100vw;
+  margin-bottom: 30px;
+  transform: scaleY(-1);
 }
 
-.bothBorders {
-  border-left: 5px solid red;
-  height: 68px;
-  border-right: 5px solid red;
-}
 
-.oneBorder {
-  height: 68px;
-  border-right: 5px solid red;
-}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-
+import './style.scss';
 const style = {
   backgroundColor: '#241f41',
   borderTop: '1px solid #E7E7E7',
@@ -39,19 +39,8 @@ export default props => {
             <div className="row">
               <div className="col-sm-3">
                 <h5>News</h5>
-                <ul>
-                  <li>
-                    <a href="#">Home</a>
-                  </li>
-                  <li>
-                    <a href="#">Sign up</a>
-                  </li>
-                  <li>
-                    <a href="#">Downloads</a>
-                  </li>
-                </ul>
               </div>
-              <div className="col-sm-3 oneBorder">
+              <div className="col-sm-3 leftBorder">
                 <ul className="ulFootter">
                   <li>
                     <a href="#">Sitemap</a>
