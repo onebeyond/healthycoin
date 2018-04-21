@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Layout from '../../components/commons/Layout/index';
+import '../styles/bootstrap.scss';
+
+import Layout from '../../components/commons/Layout';
 import AddDoctor from '../../components/admin/add-doctor/AddDoctor'
 
 export default class AddDoctorPage extends Component {
