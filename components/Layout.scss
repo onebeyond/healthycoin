@@ -3,3 +3,24 @@
   min-height: 100vh;
   flex-direction: column;
 }
+
+.ulFootter {
+  list-style-type: none;
+}
+
+.Line {
+  width: 3px;
+  height: 72px;
+  border: solid 1px #ffffff;
+}
+
+.bothBorders {
+  border-left: 5px solid red;
+  height: 68px;
+  border-right: 5px solid red;
+}
+
+.oneBorder {
+  height: 68px;
+  border-right: 5px solid red;
+}
