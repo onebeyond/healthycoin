@@ -1,9 +1,9 @@
 import React from 'react';
-import { Row, FormGroup, FormControl, HelpBlock, ControlLabel, Button, Glyphicon} from 'react-bootstrap';
+import { Row, FormGroup, FormControl, HelpBlock, ControlLabel, Button, Glyphicon } from 'react-bootstrap';
 import web3 from '../../../ethereum/web3';
 import HealthSystem from '../../../ethereum/healthSystem';
 
-export default class AddDoctor extends  React.Component {
+export default class AddAdmin extends React.Component {
 
   constructor(props, context) {
     super(props, context);
@@ -17,7 +17,7 @@ export default class AddDoctor extends  React.Component {
     };
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     const accounts = await web3.eth.getAccounts();
     console.log(accounts);
     let role = await HealthSystem.methods.getMyRole().call({ from: accounts[0] });
@@ -44,7 +44,7 @@ export default class AddDoctor extends  React.Component {
     try {
       const accounts = await web3.eth.getAccounts();
       await HealthSystem.methods
-        .addDoctor(this.state.value)
+        .addAdmin(this.state.value)
         .send({ from: accounts[0] });
     } catch (err) {
       console.log(err);
@@ -69,7 +69,7 @@ export default class AddDoctor extends  React.Component {
               controlId="formBasicText"
               validationState={this.getValidationState()}
             >
-              <ControlLabel>Manage Doctors</ControlLabel>
+              <ControlLabel>Manage Admins</ControlLabel>
               <FormControl
                 type="text"
                 value={this.state.value}
@@ -80,7 +80,7 @@ export default class AddDoctor extends  React.Component {
               <HelpBlock>Please be sure your address is an ethereum address .</HelpBlock>
             </FormGroup>
             <Button bsStyle="info" type="submit">
-              {this.state.loading ? <Glyphicon glyph="refresh" className={'animateSpinner'} /> : ''} Add Doctor
+              {this.state.loading ? <Glyphicon glyph="refresh" className={'animateSpinner'} /> : ''} Add Admin
             </Button>
           </form>
         </Row>
