@@ -10,7 +10,7 @@ export default props => {
     <div className={'layout'}>
      <img className={'background-top'} src={'/static/background.png'} alt="" />
       <Header role={'admin'} />
-      <Grid>{props.children}</Grid>
+      <Grid style={{    minHeight: 'calc(100vh - 200px)'}}>{props.children}</Grid>
       <Footer />
     </div>
   );
