@@ -9,20 +9,65 @@ import './style.scss';
 import {Doughnut} from 'react-chartjs-2';
 
 
-const donut = {
+const donuts1 = {
   labels: [
     ' 20 days',
     ' 10 days',
   ],
   datasets: [{
-    data: [60, 40],
+    data: [20, 10],
     backgroundColor: [
-      '#FF6384',
-      '#36A2EB'
+      '#D0D0D0',
+      '#58BEAC'
+    ],
+    borderWidth: [
+      0,
+      0
     ],
     hoverBackgroundColor: [
-      '#FF6384',
+      '#bbbbae',
+      '#10be72'
+    ],
+    hoverBorderWidth: [
+      0,
+      0
+    ]
+  }],
+  tooltips: {
+    callbacks: {
+      label: function(tooltipItem, data) {
+        const dataset = data.datasets[tooltipItem.datasetIndex];
+        const total = dataset.data.reduce((previousValue, currentValue) => previousValue + currentValue);
+        const currentValue = dataset.data[tooltipItem.index];
+        const precentage = Math.floor(((currentValue/total) * 100)+0.5);
+        return ' ' + precentage + '%';
+      }
+    }
+  }
+};
+
+const donuts2 = {
+  labels: [
+    ' 25 days',
+    ' 5 days',
+  ],
+  datasets: [{
+    data: [25, 5],
+    backgroundColor: [
+      '#D0D0D0',
       '#36A2EB'
+    ],
+    borderWidth: [
+      0,
+      0
+    ],
+    hoverBackgroundColor: [
+      '#bbbbae',
+      '#36A2EB'
+    ],
+    hoverBorderWidth: [
+      0,
+      0
     ]
   }],
   tooltips: {
@@ -202,7 +247,8 @@ const WeekStats = ({ data }) => (
         <div className={'topGraphicTitles'}>
           <span className={'title'}>465</span>
           <span className={'subtitle'}>Analisys Submited YTD</span>
-        </div>      </Row>
+        </div>
+      </Row>
       <Row>
         <CategoryPercentage period={'day'} data={data} barRatio={0.8} cornerRadius={5} x={'day'} y={'value'} style={{
           data: {
@@ -213,10 +259,13 @@ const WeekStats = ({ data }) => (
     </Col>
     <Col xs={6} md={6}>
       <Row>
-        <p>59 this month</p>
+        <div className={'topGraphicTitles topGraphicTitlesDonuths'}>
+          <span className={'title'}>40</span>
+          <span className={'subtitle'}>Today</span>
+        </div>
       </Row>
       <Row>
-        <Doughnut data={donut} height={300} width={300} options={{tooltips: donut.tooltips}}/>
+        <Doughnut data={donuts1} height={300} width={300} options={{tooltips: donuts1.tooltips}}/>
       </Row>
     </Col>
   </Row>
@@ -242,10 +291,12 @@ const MonthlyStats = ({ data }) => (
     </Col>
     <Col xs={6} md={6}>
       <Row>
-        <p>59 this month</p>
-      </Row>
+        <div className={'topGraphicTitles topGraphicTitlesDonuths'}>
+          <span className={'title'}>40</span>
+          <span className={'subtitle'}>Today</span>
+        </div>      </Row>
       <Row>
-        <Doughnut data={donut} height={300} width={300} options={{tooltips: donut.tooltips}}/>
+        <Doughnut data={donuts2} height={300} width={300} options={{tooltips: donuts2.tooltips}}/>
       </Row>
     </Col>
   </Row>
