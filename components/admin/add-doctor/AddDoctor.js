@@ -1,84 +1,90 @@
 import React from 'react';
-import { Grid, Row, Col, Form, FormGroup, FormControl, HelpBlock, ControlLabel, Button} from 'react-bootstrap';
+import { Row, FormGroup, FormControl, HelpBlock, ControlLabel, Button, Glyphicon} from 'react-bootstrap';
+import web3 from '../../../ethereum/web3';
+import HealthSystem from '../../../ethereum/healthSystem';
 
 export default class AddDoctor extends  React.Component {
 
-    constructor(props, context) {
+  constructor(props, context) {
     super(props, context);
 
-        this.handleChange = this.handleChange.bind(this);
-        this.getValidationState = this.getValidationState.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.getValidationState = this.getValidationState.bind(this);
 
-        this.state = {
-            value: '',
-            loading: false,
-            errorMessage: ''
-            };
-        }
-
-    getValidationState() {
-            const length = this.state.value.length;
-            if (length == 42) return 'success';
-            else if (length == 0) return 'warning';
-            else if (length < 42) return 'error';
-            return null;
-    }
-
-    handleChange(e) {
-            this.setState({ value: e.target.value });
-    }
-
-
-    onSubmit = async (event) => {
-        event.preventDefault;
-    
-        //const campaign = Campaign(this.props.address);
-    
-        this.setState({ loading: true, errorMessage: '' })
-    
-        try {
-          const accounts = await web3.eth.getAccounts();
-         
-         /* await campaign.methods.contribute().send({
-            from: accounts[0],
-            value: web3.utils.toWei(this.state.value, 'ether'),
-          });*/
-    
-          //Router.replaceRoute(`/campaigns/${this.props.address}`);
-        } catch (err) {
-          this.setState({ errorMessage: err.message });
-        }
-    
-        this.setState({ loading: false, value: ''})
-    
+    this.state = {
+      value: '',
+      loading: false,
     };
+  }
 
+  async componentDidMount(){
+    const accounts = await web3.eth.getAccounts();
+    console.log(accounts);
+    let role = await HealthSystem.methods.getMyRole().call({ from: accounts[0] });
+    console.log(role);
+  }
 
-    render() {
-        return (
-            <div>
-            <Row className="show-grid">
-            <form style={{    margin: '50px',
-    background: '#ffffff90',
-    padding: '50px',
-    borderRadius: '15px'}}>
-                <FormGroup
-                    controlId="formBasicText"
-                    validationState={this.getValidationState()}
-                >
-                    <ControlLabel>Manage Doctors</ControlLabel>
-                    <FormControl
-                    type="text"
-                    value={this.state.value}
-                    placeholder="Enter address"
-                    onChange={this.handleChange}
-                    />
-                    <FormControl.Feedback />
-                    <HelpBlock>Please be sure your address is an ethereum address .</HelpBlock>
-                </FormGroup>
-                <Button bsStyle="info" type="submit">Add Doctor</Button>
-                </form>
-            </Row>
-        </div>);
+  getValidationState() {
+    const length = this.state.value.length;
+    if (length == 42) return 'success';
+    else if (length == 0) return 'warning';
+    else if (length < 42) return 'error';
+    return null;
+  }
+
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
+
+  onSubmit = async (event) => {
+    event.preventDefault();
+
+    this.setState({ loading: true });
+
+    try {
+      const accounts = await web3.eth.getAccounts();
+      await HealthSystem.methods
+        .addDoctor(this.state.value)
+        .send({ from: accounts[0] });
+    } catch (err) {
+      console.log(err);
     }
+
+    this.setState({ loading: false });
+  }
+
+  render() {
+    return (
+      <div>
+        <Row className="show-grid">
+          <form onSubmit={this.onSubmit}
+            style={{
+              margin: '50px',
+              background: '#ffffff90',
+              padding: '50px',
+              borderRadius: '15px'
+            }}
+          >
+            <FormGroup
+              controlId="formBasicText"
+              validationState={this.getValidationState()}
+            >
+              <ControlLabel>Manage Doctors</ControlLabel>
+              <FormControl
+                type="text"
+                value={this.state.value}
+                placeholder="Enter address"
+                onChange={this.handleChange}
+              />
+              <FormControl.Feedback />
+              <HelpBlock>Please be sure your address is an ethereum address .</HelpBlock>
+            </FormGroup>
+            <Button bsStyle="info" type="submit">
+              {this.state.loading ? <Glyphicon glyph="refresh" className={'animateSpinner'} /> : ''} Add Doctor
+            </Button>
+          </form>
+        </Row>
+      </div>
+    );
+  }
 }
