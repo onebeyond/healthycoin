@@ -32,8 +32,6 @@ contract HealthSystem {
       uint max;
       uint weight;
     }
-    mapping(uint => Indicator) indicators;
-    uint nextIndicatorId;
 
     enum Compared {
       High,
@@ -46,7 +44,11 @@ contract HealthSystem {
     mapping(address => bool) doctors;
     mapping(address => PatientData) patients;
 
-    
+    mapping(uint => Indicator) indicators;
+    uint nextIndicatorId;
+
+
+
     function HealthSystem() public{
         owner = msg.sender;
         nextIndicatorId = 0;
