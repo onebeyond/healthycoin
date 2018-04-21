@@ -120,12 +120,12 @@ const CategoryPercentage = (props) => (
   <VictoryChart theme={VictoryTheme.material} domainPadding={10}>
     <VictoryAxis
       dependentAxis
-      tickValues={['']}
       style={{
         axis: { stroke: 'none' },
         ticks: { stroke: 'none'},
+        tickLabels: { opacity: 0},
         grid: {
-          stroke: (t) => 'transparent'
+          stroke: '#f1f1f1'
         }
       }}
     />
@@ -195,37 +195,14 @@ const Insights = ({ data }) => (
   </ListGroup>
 );
 
-const MonthlyStats = ({ data }) => (
-  <Row>
-    <Col xs={6} md={6}>
-      <Row>
-        <p>465</p>
-      </Row>
-      <Row>
-        <CategoryPercentage period={'month'} data={data} barRatio={0.8} cornerRadius={5} x="month" y="value" style={{
-          data: {
-            fill: (d) => d.x === 12 ? '#0c9bf9' : '#d0d0d0',
-          }
-        }} />
-      </Row>
-    </Col>
-    <Col xs={6} md={6}>
-      <Row>
-        <p>59 this month</p>
-      </Row>
-      <Row>
-        <Doughnut data={donut} height={300} width={300} options={{tooltips: donut.tooltips}}/>
-      </Row>
-    </Col>
-  </Row>
-);
-
 const WeekStats = ({ data }) => (
   <Row>
     <Col xs={6} md={6}>
       <Row>
-        <p>465</p>
-      </Row>
+        <div className={'topGraphicTitles'}>
+          <span className={'title'}>465</span>
+          <span className={'subtitle'}>Analisys Submited YTD</span>
+        </div>      </Row>
       <Row>
         <CategoryPercentage period={'day'} data={data} barRatio={0.8} cornerRadius={5} x={'day'} y={'value'} style={{
           data: {
@@ -245,6 +222,34 @@ const WeekStats = ({ data }) => (
   </Row>
 );
 
+
+const MonthlyStats = ({ data }) => (
+  <Row>
+    <Col xs={6} md={6}>
+      <Row>
+        <div className={'topGraphicTitles'}>
+          <span className={'title'}>4569</span>
+          <span className={'subtitle'}>Patients total</span>
+        </div>
+      </Row>
+      <Row>
+        <CategoryPercentage period={'month'} data={data} barRatio={0.8} cornerRadius={5} x="month" y="value" style={{
+          data: {
+            fill: (d) => d.x === 12 ? '#0c9bf9' : '#d0d0d0',
+          }
+        }} />
+      </Row>
+    </Col>
+    <Col xs={6} md={6}>
+      <Row>
+        <p>59 this month</p>
+      </Row>
+      <Row>
+        <Doughnut data={donut} height={300} width={300} options={{tooltips: donut.tooltips}}/>
+      </Row>
+    </Col>
+  </Row>
+);
 
 const MonthlyGoals = ({ data }) => (
   <div>
