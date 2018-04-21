@@ -249,16 +249,16 @@ const WeekStats = ({ data }) => (
 const MonthlyGoals = ({ data }) => (
   <div>
     <Col xs={3} md={3}>
-      <Wheel data={data.ch} x="month" y="value" />
+      <Wheel data={data.ch} x="month" y="value" colorScale={['#13c1ac', '#1b1b1b']}/>
     </Col>
     <Col xs={3} md={3}>
-      <Wheel data={data.gl} x="month" y="value" />
+      <Wheel data={data.gl} x="month" y="value" colorScale={['#ed4c74', '#1b1b1b']}/>
     </Col>
     <Col xs={3} md={3}>
-      <Wheel data={data.bp} x="month" y="value" />
+      <Wheel data={data.bp} x="month" y="value" colorScale={['#11a0ff', '#1b1b1b']}/>
     </Col>
     <Col xs={3} md={3}>
-      <Wheel data={data.ur} x="month" y="value" />
+      <Wheel data={data.ur} x="month" y="value" colorScale={['#f3a1aa', '#1b1b1b']}/>
     </Col>
   </div>
 );
