@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/bootstrap.scss';
 
-import Layout from '../components/Layout'
+import Layout from '../components/commons/Layout'
 
 class HealthySystemIndex extends Component {
   render() {
