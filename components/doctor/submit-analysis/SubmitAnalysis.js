@@ -8,7 +8,8 @@ import {
   FormControl,
   HelpBlock,
   ControlLabel,
-  Button
+  Button,
+  Glyphicon
 } from 'react-bootstrap';
 import ListAnalysis from '../../admin/analysis-metrics';
 import index from '../../admin/analysis-metrics';
@@ -40,7 +41,8 @@ export default class SubmitAnalisys extends React.Component {
       saturated_fat: '',
       hematocrits: '',
       chreatin: '',
-      hemoglobin: ''
+      hemoglobin: '',
+      loading: false
     };
   }
 
@@ -50,7 +52,11 @@ export default class SubmitAnalisys extends React.Component {
     const indicators = Object.keys(matchArr);
     const values = Object.keys(stateShallow)
       .map(function(key, index) {
-        if (key !== 'patient_address' && key !== 'patient_date') {
+        if (
+          key !== 'patient_address' &&
+          key !== 'patient_date' &&
+          key !== 'loading'
+        ) {
           return parseInt(stateShallow[key]);
         }
       })
@@ -62,6 +68,9 @@ export default class SubmitAnalisys extends React.Component {
     const score = Math.floor(Math.random() * 6) + 1;
     const reward = Math.floor(Math.random() * 6) + 1;
 
+    this.setState(() => {
+      return { loading: true };
+    });
     try {
       const accounts = await web3.eth.getAccounts();
       await HealthSystem.methods
@@ -82,6 +91,9 @@ export default class SubmitAnalisys extends React.Component {
     } catch (err) {
       console.log(err);
     }
+    this.setState(() => {
+      return { loading: false };
+    });
   }
 
   handleInputsChange(event) {
@@ -123,6 +135,11 @@ export default class SubmitAnalisys extends React.Component {
               <ListAnalysis handleChange={this.handleInputsChange} />
             </FormGroup>
             <Button className="pull-right" bsStyle="info" type="submit">
+              {this.state.loading ? (
+                <Glyphicon glyph="refresh" className={'animateSpinner'} />
+              ) : (
+                ''
+              )}{' '}
               Submit Analysis
             </Button>
           </form>
