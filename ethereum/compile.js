@@ -5,16 +5,27 @@ const fs = require('fs-extra');
 const buildPath = path.resolve(__dirname, 'build');
 fs.removeSync(buildPath);
 
-
-const healthSystemPath = path.resolve(__dirname, 'contracts', 'HealthSystem.sol');
-const source = fs.readFileSync(healthSystemPath, 'utf8');
-const output = solc.compile(source, 1).contracts;
+const contracts = [
+  'HealthSystem',
+  'AnalysisParameters'
+];
+const getPath = (name) => path.resolve(__dirname, 'contracts', `${name}.sol`);
 
 fs.ensureDirSync(buildPath);
 
-for (let contract in output) {
-  fs.outputJsonSync(
-    path.resolve(buildPath, `${contract.replace(':', '')}.json`),
-    output[contract]
-  );
+const compileContract = (contractPath) => {
+  console.log(`compiling ${contractPath}`);
+  const source = fs.readFileSync(contractPath, 'utf8');
+  const output = solc.compile(source, 1).contracts;
+  console.log(solc.compile(source, 1))
+
+  for (let contract in output) {
+    console.log(`contract ${contract}`)
+    fs.outputJsonSync(
+      path.resolve(buildPath, `${contract.replace(':', '')}.json`),
+      output[contract]
+    );
+  }
 }
+
+contracts.map(contract => compileContract(getPath(contract)));
