@@ -10,7 +10,9 @@ export default class AddDoctor extends  React.Component {
         this.getValidationState = this.getValidationState.bind(this);
 
         this.state = {
-            value: ''
+            value: '',
+            loading: false,
+            errorMessage: ''
             };
         }
 
@@ -25,6 +27,32 @@ export default class AddDoctor extends  React.Component {
     handleChange(e) {
             this.setState({ value: e.target.value });
     }
+
+
+    onSubmit = async (event) => {
+        event.preventDefault;
+    
+        //const campaign = Campaign(this.props.address);
+    
+        this.setState({ loading: true, errorMessage: '' })
+    
+        try {
+          const accounts = await web3.eth.getAccounts();
+         
+         /* await campaign.methods.contribute().send({
+            from: accounts[0],
+            value: web3.utils.toWei(this.state.value, 'ether'),
+          });*/
+    
+          //Router.replaceRoute(`/campaigns/${this.props.address}`);
+        } catch (err) {
+          this.setState({ errorMessage: err.message });
+        }
+    
+        this.setState({ loading: false, value: ''})
+    
+    };
+
 
     render() {
         return (

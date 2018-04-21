@@ -16,9 +16,9 @@ contract AnalysisParameters {
     }
 
     enum Compared {
-    High,
-    Healthy,
-    Low
+        High,
+        Healthy,
+        Low
     }
 
     mapping(uint => Indicator) indicators;
