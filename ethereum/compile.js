@@ -6,8 +6,7 @@ const buildPath = path.resolve(__dirname, 'build');
 fs.removeSync(buildPath);
 
 const contracts = [
-  'HealthSystem',
-  'AnalysisParameters'
+  'HealthSystem'
 ];
 const getPath = (name) => path.resolve(__dirname, 'contracts', `${name}.sol`);
 

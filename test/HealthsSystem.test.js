@@ -10,7 +10,7 @@ const { interface, bytecode } = require('../ethereum/build/HealthSystem.json');
 let accounts;
 let healthSys;
 
-describe ('Inbox', () => {
+describe ('HealthSystem', () => {
   beforeEach(async () => {
     // Get a list of all accounts
     accounts = await web3.eth.getAccounts();
