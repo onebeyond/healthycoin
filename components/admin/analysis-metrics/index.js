@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import listItem from '../../commons/ListAnalysis';
+import { ListGroup, ListGroupItem, FormControl } from 'react-bootstrap';
 import './style.scss';
 
 import mockAnalysis from '../../../server/mocks/user-analysis.json';
@@ -14,29 +13,38 @@ export default () => {
     >
       <ListGroup>
         {mockAnalysis['indicators'].map(indicator => (
-          <ListGroupItem id="listAnalysisItem">
+          <div>
             <div
               style={{
                 borderRadius: '10px',
-                backgroundColor: '#b6e1fd'
+                backgroundColor: '#b6e1fd',
+                width: '92%',
+                margin: 'auto'
               }}
             >
               {indicator.category}
             </div>
-            <div className="row">
-              <div className="col-sm-4">
-                <p>{indicator.key}</p>
+            <ListGroupItem id="listAnalysisItem">
+              <div className="row">
+                <div className="col-sm-4">
+                  <p>{indicator.key}</p>
+                </div>
+                <div className="col-sm-4">
+                  <p>{indicator.value}</p>
+                </div>
+                <div className="col-sm-4">
+                  <FormControl
+                    type="text"
+                    placeholder="Patient"
+                    onChange={this.handleChange}
+                    id="customFormControl"
+                  />
+                </div>
               </div>
-              <div className="col-sm-4">
-                <p>{indicator.value}</p>
-              </div>
-              <div className="col-sm-4">
-                <p>Here the input</p>
-              </div>
-            </div>
-          </ListGroupItem>
+            </ListGroupItem>
+          </div>
         ))}
-      </ListGroup>;
+      </ListGroup>
     </div>
   );
 };
