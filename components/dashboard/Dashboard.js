@@ -211,11 +211,6 @@ const CategoryPercentage = (props) => (
   </VictoryChart>
 );
 
-/*barRatio={0.8} cornerRadius={5} data={data} x="month" y="value" style={{
-  data: {
-    fill: (d) => d.x === 12 ? '#d0d0d0' : '#13c1ac',
-  }
-}*/
 const Wheel = (props) => (
   <VictoryPie innerRadius={100} {...props}/>
 );
@@ -232,10 +227,6 @@ const SpiderChart = ({ props }) => (
     />
   </VictoryChart>
 );
-
-// const Chart3 = () => (
-//   <VictoryPie innerRadius={100} data={data} x="month" y="value"/>
-// );
 
 const LinesChart = ({ data }) => (
   <VictoryChart>
@@ -265,12 +256,20 @@ const LinesChart = ({ data }) => (
     <VictoryLine data={data2} x="month" y="value" style={{ data: { stroke: "#ed684a" }}} />
     <VictoryLine data={data3} x="month" y="value" style={{ data: { stroke: "#57c9c1" }}} />
     <VictoryLegend x={125} y={10}
-                   orientation="horizontal"
-                   gutter={20}
-                   colorScale={["navy", "blue", "cyan"]}
-                   data={[
-                     { name: "Thresholds achievements" }, { name: "National spent" }, { name: "Ethereum rewards" }
-                   ]}
+      centerTitle
+      orientation="horizontal"
+      gutter={20}
+      data={[
+        { name: "Thresholds achievements", symbol: { fill: "#0c9bf9" } },
+        { name: "National spent", symbol: { fill: "#ed684a" } },
+        { name: "Ethereum rewards", symbol: { fill: "#57c9c1" } }
+      ]}
+      style={{
+        data: { fill: "blue", stroke: "black", strokeWidth: .5 },
+        labels: { fill: "black", fontSize: 8 },
+        // border: { stroke: "black" },
+        title: { fontSize: 8 }
+      }}
     />
   </VictoryChart>
 );
