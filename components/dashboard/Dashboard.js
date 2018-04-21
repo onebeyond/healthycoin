@@ -28,6 +28,25 @@ const data2 = [
   {month: 4, value: 100}
 ];
 
+const scoreGoals = {
+  ch: [
+    { name: 'ch', value: 10 },
+    { name: '', value: 90 },
+  ],
+  gl: [
+    { name: 'gl', value: 25 },
+    { name: '', value: 75 },
+  ],
+  bp: [
+    { name: 'bp', value: 30 },
+    { name: '', value: 60 },
+  ],
+  ur: [
+    { name: 'ur', value: 67 },
+    { name: '', value: 33 },
+  ]
+}
+
 export default () => {
 
   const CategoryPercentage = ({ data }) => (
@@ -42,24 +61,18 @@ export default () => {
     <VictoryPie innerRadius={100} {...props}/>
   );
 
-  // const Chart2 = () => (
-  //   <VictoryChart polar domain={{ y: [0, 25000]}} theme={VictoryTheme.material}>
-  //     <VictoryPolarAxis dependentAxis style={{ axis: { stroke: "none" } }} tickFormat={() => null}/>
-  //     <VictoryPolarAxis/>
-  //     <VictoryLine
-  //       data={data}
-  //       x="month"
-  //       y="value"
-  //       style={{
-  //         data: { stroke: "#c43a31" },
-  //       }}
-  //     />
-  //   </VictoryChart>
-  //   // <VictoryChart polar theme={VictoryTheme.material}>
-  //   //   <VictoryArea data={data} x="month" y="value"/>
-  //   //   <VictoryPolarAxis/>
-  //   // </VictoryChart>
-  // );
+  const SpiderChart = ({ props }) => (
+    <VictoryChart polar domain={{ y: [0, 25000]}} theme={VictoryTheme.material}>
+      <VictoryPolarAxis dependentAxis style={{ axis: { stroke: "none" } }} tickFormat={() => null}/>
+      <VictoryPolarAxis/>
+      <VictoryLine
+        {...props}
+        style={{
+          data: { stroke: "#c43a31" },
+        }}
+      />
+    </VictoryChart>
+  );
 
   // const Chart3 = () => (
   //   <VictoryPie innerRadius={100} data={data} x="month" y="value"/>
@@ -112,38 +125,81 @@ export default () => {
     </Row>
   );
 
+
+  const MonthlyGoals = ({ data }) => (
+    <div>
+      <Col xs={3} md={3}>
+        <Wheel data={data.ch} x="month" y="value" />
+      </Col>
+      <Col xs={3} md={3}>
+        <Wheel data={data.gl} x="month" y="value" />
+      </Col>
+      <Col xs={3} md={3}>
+        <Wheel data={data.bp} x="month" y="value" />
+      </Col>
+      <Col xs={3} md={3}>
+        <Wheel data={data.ur} x="month" y="value" />
+      </Col>
+    </div>
+  );
+
   return (
-      <Grid>
-        <Row className="show-grid">
-          <Col xs={6} md={6}>
-            <MonthlyStats data={scorePerMonth}/>
-          </Col>
-          <Col xs={6} md={6}>
-            <MonthlyStats data={scorePerMonth} />
-          </Col>
-        </Row>
-        <Row className="show-grid">
-          <Col xs={8} md={8}>
+    <Grid>
+      <Row className="show-grid">
+        <Col xs={6} md={9}>
+          <Row className="show-grid">
+            <Col xs={6} md={6}>
+              <MonthlyStats data={scorePerMonth} />
+            </Col>
+            <Col xs={6} md={6}>
+              <MonthlyStats data={scorePerMonth} />
+            </Col>
+          </Row>
+          <Row className="show-grid">
+            <Col xs={8} md={8}>
+              <Row className="show-grid">
+                <p>Overall</p>
+              </Row>
+              <Row className="show-grid">
+                <LinesChart data={scorePerMonth} />
+              </Row>
+            </Col>
+            <Col xs={4} md={4}>
+              <Row className="show-grid">
+                <p>At a glance 2017</p>
+              </Row>
+              <Row className="show-grid">
+                <Insights data={scorePerMonth} />
+              </Row>
+            </Col>
+          </Row>
+        </Col>
+        <Col xs={6} md={3}>
+          <Row className="show-grid">
+            <Col xs={12} md={12}>
+              <h4>+1.6 ETH</h4>
+              <h5>Rewards last month</h5>
+            </Col>
+          </Row>
+          <Row className="show-grid">
+            <Col xs={12} md={12}>
+              <SpiderChart data={scoreGoals} />
+            </Col>
+          </Row>
+          <Row className="show-grid">
             <Row className="show-grid">
-              <p>Overall</p>
+              Monthly goals
             </Row>
             <Row className="show-grid">
-              <LinesChart data={scorePerMonth} />
+              <MonthlyGoals data={scoreGoals}/>
             </Row>
-          </Col>
-          <Col xs={4} md={4}>
-            <Row className="show-grid">
-              <p>At a glance 2017</p>
-            </Row>
-            <Row className="show-grid">
-              <Insights data={scorePerMonth} />
-            </Row>
-          </Col>
-        </Row>
-        </Grid>
-      // {/* <CategoryPercentage/>
-      // <Chart2/>
-      // <Chart3/>
-      // <Chart4/> */}
+          </Row>
+          <Row className="show-grid">
+            <Col xs={12} md={12}>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Grid>
   );
 }
