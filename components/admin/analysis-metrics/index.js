@@ -13,8 +13,8 @@ export default props => {
       }}
     >
       <ListGroup>
-        {mockAnalysis['indicators'].map(indicator => (
-          <div>
+        {mockAnalysis['indicators'].map((indicator, index) => (
+          <div key={index}>
             <div
               style={{
                 borderRadius: '10px',
