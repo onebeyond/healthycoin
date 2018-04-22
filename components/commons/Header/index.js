@@ -30,7 +30,7 @@ export default class Header extends Component {
           <Navbar.Brand>
             <Link route={"/"}>
               <a>
-                <img src={"../../static/logo.png"} style={{ width: '50px', margin: '2px 0 0 0' }} /> 
+                <img src={"../../static/logoEther.png"} style={{ height: '45px', margin: '2px 0' }} /> 
               </a>
             </Link>
           </Navbar.Brand>
