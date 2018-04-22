@@ -14,6 +14,7 @@ import {
 import ListAnalysis from '../../patient/analysis-metrics';
 import web3 from '../../../ethereum/web3';
 import HealthSystem from '../../../ethereum/healthSystem';
+import './style.scss';
 
 const matchArr = {
   1: 'cholesterol',
@@ -130,10 +131,13 @@ export default class SubmitAnalisys extends React.Component {
                 onChange={this.handleInputsChange}
               />
               <FormControl.Feedback />
-              <HelpBlock>Format Date YYYY/MM/DD</HelpBlock>
               <ListAnalysis handleChange={this.handleInputsChange} />
             </FormGroup>
-            <Button className="pull-right" bsStyle="info" type="submit">
+            <Button
+              className="pull-right buttonForm"
+              bsStyle="info"
+              type="submit"
+            >
               {this.state.loading ? (
                 <Glyphicon glyph="refresh" className={'animateSpinner'} />
               ) : (
