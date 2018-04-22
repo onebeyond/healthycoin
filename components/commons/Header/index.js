@@ -13,11 +13,11 @@ const navItemsRole = {
     {url: '/doctor/submitAnalysis', label: 'SUBMIT ANALYSIS'}
   ],
   patient: [
-    {url: '/patient/analysisDetails', 'ANALYSIS DETAILS'},
-    {url: '/patient/listRecords', 'LIST RECORDS'}
+    {url: '/patient/analysisDetails', label: 'ANALYSIS DETAILS'},
+    {url: '/patient/listRecords', label: 'LIST RECORDS'}
   ],
   owner: [
-    {url: '/owner/analysisDetails', 'ADD ADMIN'}
+    {url: '/owner/analysisDetails', lable: 'ADD ADMIN'}
   ]
 }
 
