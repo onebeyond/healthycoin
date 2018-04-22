@@ -3,7 +3,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 export default class Header extends Component {
   navItemsRole = [
-    ['/admin/addDoctor', '/thresholds', '/dashboard'],
+    ['/admin/addDoctor', '/doctor/addPatient', '/dashboard'],
     [''],
     ['oneLink', 'twoLink', 'anotherLink']
   ];
@@ -37,7 +37,7 @@ export default class Header extends Component {
               eventKey={1}
               href={this.navItemsRole[0][0]}
             >
-              DOCTORS
+              ADD DOCTOR
             </NavItem>
             <NavItem
               onClick={this.onClickNav}
@@ -45,7 +45,7 @@ export default class Header extends Component {
               eventKey={2}
               href={this.navItemsRole[0][1]}
             >
-              PATIENTS
+              ADD PATIENT
             </NavItem>
             <NavItem
               onClick={this.onClickNav}
