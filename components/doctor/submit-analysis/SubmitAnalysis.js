@@ -65,8 +65,6 @@ export default class SubmitAnalisys extends React.Component {
     const year = stateShallow.patient_date.substring(0, 4);
     const month = stateShallow.patient_date.substring(6, 7);
     const day = stateShallow.patient_date.substring(9, 10);
-    const score = Math.floor(Math.random() * 6) + 1;
-    const reward = Math.floor(Math.random() * 6) + 1;
 
     this.setState(() => {
       return { loading: true };
@@ -77,16 +75,7 @@ export default class SubmitAnalisys extends React.Component {
         .addPatient(addressPatient)
         .send({ from: accounts[0] });
       await HealthSystem.methods
-        .addAnalysis(
-          indicators,
-          values,
-          addressPatient,
-          day,
-          month,
-          year,
-          score,
-          reward
-        )
+        .addAnalysis(indicators, values, addressPatient, day, month, year)
         .send({ from: accounts[0] });
     } catch (err) {
       console.log(err);

@@ -6,7 +6,7 @@ class AnalysisMetricsPage extends Component {
   render() {
     return (
       <Layout>
-        <AnalysisMetrics />;
+        <AnalysisMetrics isForm={false} />;
       </Layout>
     );
   }
