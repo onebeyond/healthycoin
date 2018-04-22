@@ -8,6 +8,8 @@ import {
   Button,
   Glyphicon
 } from 'react-bootstrap';
+import './style.scss';
+
 import web3 from '../../../ethereum/web3';
 import HealthSystem from '../../../ethereum/healthSystem';
 

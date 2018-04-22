@@ -1,0 +1,34 @@
+.wrapper-all-dash {
+  margin: 50px 0;
+}
+.wrapper-dashcard {
+  width: 240px;
+}
+
+.wrapper-dashcard-odd {
+  float: right;
+}
+
+.dashcard-tread {
+  width: 216px !important;
+  border: solid 3px #03a9f4 !important;
+  box-shadow: 0 5px 30px rgba(38, 115, 193, 0.18) !important;
+  display: inline-block !important;
+  img {
+    width: 69px !important;
+    margin: 0 auto 0;
+    display: block;
+  }
+  .dashcard-label {
+    float: none !important;
+    vertical-align: middle;
+    color: #034c7b;
+  }
+  .dashcard-subLabel {
+    display: inline-block !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    color: #034c7b;
+    margin-left: 15px
+  }
+}

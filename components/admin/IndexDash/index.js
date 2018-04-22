@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.scss';
+
 import DashCard from '../../commons/DashCard';
 import { Grid, Row, Col } from 'react-bootstrap';
 import web3 from '../../../ethereum/web3';
@@ -7,8 +9,8 @@ import healthSystem from '../../../ethereum/healthSystem';
 export default class IndexDash extends Component {
   static async getInitialProps() {
     const accounts = await web3.eth.getAccounts();
-    console.log('accounts', accounts)
-    
+    console.log('accounts', accounts);
+
     return { accounts };
   };
 
@@ -28,7 +30,7 @@ export default class IndexDash extends Component {
   }
 
   state = {
-    admins: 0, 
+    admins: 0,
     doctors: 0,
     patients: 0,
     analysis: 0,
@@ -36,21 +38,29 @@ export default class IndexDash extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row className="show-grid">
+      <Grid className={'wrapper-all-dash'}>
+        <Row>
           <Col md={6}>
-            <DashCard icon="report.png" label={this.state.admins} subLabel="Administrators" />
+            <div className={'wrapper-dashcard wrapper-dashcard-odd'}>
+              <DashCard icon="user-2@3x.png" label={this.state.admins} subLabel="Administrators" customStyle={'dashcard-tread'} />
+            </div>
           </Col>
           <Col md={6}>
-            <DashCard icon="report.png" label={this.state.doctors} subLabel="Doctors" />
+            <div className={'wrapper-dashcard'}>
+              <DashCard icon="user-2@3x.png" label={this.state.admins}  subLabel="Doctors" customStyle={'dashcard-tread'} />
+            </div>
           </Col>
         </Row>
         <Row className="show-grid">
           <Col md={6}>
-            <DashCard icon="report.png" label={this.state.patients} subLabel="Patients" />
+            <div className={'wrapper-dashcard wrapper-dashcard-odd'}>
+              <DashCard icon="user-2@3x.png" label={this.state.patients}  subLabel="Patients" customStyle={'dashcard-tread'} />
+            </div>
           </Col>
           <Col md={6}>
-            <DashCard icon="report.png" label={this.state.analysis} subLabel="Analysis submitted" />
+            <div className={'wrapper-dashcard'}>
+              <DashCard icon="report.png" label={this.state.patients}  subLabel="Analysis submitted" customStyle={'dashcard-tread'} />
+            </div>
           </Col>
         </Row>
       </Grid>
