@@ -72,10 +72,6 @@ export default class SubmitAnalisys extends React.Component {
     try {
       const accounts = await web3.eth.getAccounts();
       await HealthSystem.methods
-
-        .addPatient(addressPatient)
-        .send({ from: accounts[0] });
-      await HealthSystem.methods
         .addAnalysis(
           indicators,
           values,
