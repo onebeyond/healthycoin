@@ -131,7 +131,10 @@ export default class SubmitAnalisys extends React.Component {
                 onChange={this.handleInputsChange}
               />
               <FormControl.Feedback />
-              <ListAnalysis handleChange={this.handleInputsChange} />
+              <ListAnalysis
+                handleChange={this.handleInputsChange}
+                isForm={true}
+              />
             </FormGroup>
             <Button
               className="pull-right buttonForm"

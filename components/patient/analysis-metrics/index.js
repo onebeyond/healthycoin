@@ -5,7 +5,7 @@ import './style.scss';
 import mockAnalysis from '../../../server/mocks/user-analysis.json';
 
 export default props => {
-  let { handleChange } = props;
+  let { handleChange, isForm } = props;
   return (
     <div
       style={{
@@ -36,7 +36,16 @@ export default props => {
                   <p>{indicator.range}</p>
                 </div>
                 <div className="col-sm-4">
-                  <p>{indicator.value}</p>
+                  {isForm && (
+                    <FormControl
+                      type="text"
+                      placeholder="Quantity"
+                      name={indicator.key}
+                      onChange={handleChange}
+                      id="customFormControl"
+                    />
+                  )}
+                  {!isForm && <p>{indicator.value}</p>}
                 </div>
               </div>
             </ListGroupItem>
