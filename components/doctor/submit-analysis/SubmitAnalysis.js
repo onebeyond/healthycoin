@@ -11,8 +11,7 @@ import {
   Button,
   Glyphicon
 } from 'react-bootstrap';
-import ListAnalysis from '../../admin/analysis-metrics';
-import index from '../../admin/analysis-metrics';
+import ListAnalysis from '../../patient/analysis-metrics';
 import web3 from '../../../ethereum/web3';
 import HealthSystem from '../../../ethereum/healthSystem';
 
