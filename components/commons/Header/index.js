@@ -28,7 +28,7 @@ export default class Header extends Component {
       <Navbar fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link route="/">
+            <Link route={"/"}>
               <a>
                 <img src={"../../static/logo.png"} style={{ width: '50px', margin: '2px 0 0 0' }} /> 
               </a>
