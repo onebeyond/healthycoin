@@ -13,7 +13,6 @@ const navItemsRole = {
     { url: '/doctor/listRecords', label: 'LIST RECORDS' }
   ],
   patient: [
-    {url: '/patient/analysisDetails', label: 'ANALYSIS DETAILS'},
     {url: '/patient/listRecords', label: 'LIST RECORDS'}
   ],
   owner: [
