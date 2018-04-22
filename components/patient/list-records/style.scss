@@ -1,0 +1,41 @@
+.record-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 90vw;
+  background: #fff;
+  padding: 5px;
+  border-radius: 8px;
+  margin: 5px;
+
+  .record-item-date{
+    background: #d8d8d8;
+    border-radius: 8px;
+    /* padding: 0 10px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .record-item-date-top{
+      flex: 1;
+      background: #d8d8d8;
+      width: 100%;
+      margin: 0 8px;
+      text-align: center;
+      color: #034c7b;
+    }
+
+    .record-item-date-bottom {
+      flex: 1;
+      color: #d8d8d8;
+      width: 100%;
+      margin: 0 8px;
+      text-align: center;
+      background: #034c7b;
+    }
+  }
+
+}

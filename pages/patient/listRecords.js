@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import Layout from '../../components/commons/Layout';
-import AnalysisMetrics from '../../components/admin/analysis-metrics';
+import ListRecords from '../../components/patient/list-records/ListRecords';
+
 import '../../styles/bootstrap.scss';
-class AnalysisMetricsPage extends Component {
+class ListRecordsPage extends Component {
   render() {
     return (
       <Layout>
-        <AnalysisMetrics />;
+        <ListRecords />
       </Layout>
     );
   }
 }
 
-export default AnalysisMetricsPage;
+export default ListRecordsPage;

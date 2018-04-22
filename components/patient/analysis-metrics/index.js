@@ -5,7 +5,7 @@ import './style.scss';
 import mockAnalysis from '../../../server/mocks/user-analysis.json';
 
 export default props => {
-  let { handleChange } = props;
+  let { handleChange, isForm } = props;
   return (
     <div
       style={{
@@ -20,10 +20,12 @@ export default props => {
                 borderRadius: '10px',
                 backgroundColor: '#b6e1fd',
                 width: '92%',
-                margin: 'auto'
+                margin: 'auto',
+                textIndent: '14px'
               }}
             >
-              {indicator.category}
+              {indicator.category.charAt(0).toUpperCase() +
+                indicator.category.slice(1)}
             </div>
             <ListGroupItem id="listAnalysisItem">
               <div className="row">
@@ -31,16 +33,19 @@ export default props => {
                   <p>{indicator.key}</p>
                 </div>
                 <div className="col-sm-4">
-                  <p>{indicator.value}</p>
+                  <p>{indicator.range}</p>
                 </div>
                 <div className="col-sm-4">
-                  <FormControl
-                    type="text"
-                    placeholder="Quantity"
-                    name={indicator.key}
-                    onChange={handleChange}
-                    id="customFormControl"
-                  />
+                  {isForm && (
+                    <FormControl
+                      type="text"
+                      placeholder="Quantity"
+                      name={indicator.key}
+                      onChange={handleChange}
+                      id="customFormControl"
+                    />
+                  )}
+                  {!isForm && <p>{indicator.value}</p>}
                 </div>
               </div>
             </ListGroupItem>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Link } from '../../../routes';
 
 export default class Header extends Component {
   navItemsRole = [
@@ -26,7 +27,13 @@ export default class Header extends Component {
     return (
       <Navbar fixedTop>
         <Navbar.Header>
-          <Navbar.Brand>ICONO</Navbar.Brand>
+          <Navbar.Brand>
+            <Link route={"/"}>
+              <a>
+                <img src={"../../static/logoEther.png"} style={{ height: '45px', margin: '2px 0' }} /> 
+              </a>
+            </Link>
+          </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
