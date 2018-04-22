@@ -6,14 +6,17 @@ const navItemsRole = {
   admin: [
     {url: '/admin/addDoctor', label: 'ADD DOCTOR'},
     {url: '/admin/addPatient', label: 'ADD PATIENT'},
-    {url: '/admin/submitThresholds', label: 'MANAGE INDICATORS'}
+    {url: '/admin/submitThresholds', label: 'MANAGE INDICATORS'},
+    {url: '/dashboard', label: 'DASHBOARD'}
   ],
   doctor: [
     {url: '/doctor/submitAnalysis', label: 'SUBMIT ANALYSIS'},
-    { url: '/doctor/listRecords', label: 'LIST RECORDS' }
+    {url: '/doctor/listRecords', label: 'LIST RECORDS' },
+    {url: '/dashboard', label: 'DASHBOARD'}
   ],
   patient: [
-    {url: '/patient/listRecords', label: 'LIST RECORDS'}
+    {url: '/patient/listRecords', label: 'LIST RECORDS'},
+    {url: '/dashboard', label: 'DASHBOARD'}
   ],
   owner: [
     {url: '/owner/analysisDetails', lable: 'ADD ADMIN'}
