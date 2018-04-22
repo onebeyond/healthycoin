@@ -10,6 +10,7 @@ routes
   .add('/patient/analysis-details', '/patient/analysisMetrics')
   .add('/patient/index', '/patient/withdraw')
   .add('/patient/list-records', '/patient/listRecords')
+  .add('/doctor/listRecords', '/patient/listRecords')
   .add('/owner/add-admin', '/owner/addAdmin');
 
 module.exports = routes;

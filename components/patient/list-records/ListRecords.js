@@ -47,20 +47,20 @@ export default class ListRecords extends React.Component {
       hemoglobin: '',
       loading: false,
       listAnalysis: [],
+      patientAddress: '',
     };
+
+    this.getRecords = this.getRecords.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onAddressChange = this.onAddressChange.bind(this);
   }
 
-  async componentDidMount() {
+  async getRecords(patientAddress) {
+    console.log(patientAddress)
     const accounts = await web3.eth.getAccounts();
-    console.log(`accounts: ${accounts}`);
-    const myRole = await healthSystem.methods.getMyRole().call({ from: accounts[0] });
-    console.log(`numOfRecords: ${JSON.stringify(patientRecords.items.length)}`);
-    // this.setState({ account: accounts[0], numOfRecords });
-    
-    this.setState({ loading: true });
-    
+    this.setState({ loading: true, patient_address: patientAddress });
+
     try {
-      const patientAddress = '0x4c96933df32BF4fD6F70165Bf303fcb57f14929d';
       const numAnalysis = await healthSystem.methods.getNumberAnalysis(patientAddress).call({ from: accounts[0] });
       console.log(numAnalysis)
       const listRetrieved = await Promise.all(
@@ -71,6 +71,7 @@ export default class ListRecords extends React.Component {
 
       const listAnalysis = listRetrieved.map((element) => (
         {
+          patient: patientAddress,
           doctor: element[2],
           score: element[6],
           reward: element[7],
@@ -78,19 +79,42 @@ export default class ListRecords extends React.Component {
           date: `${element[3]}-${element[4]}-${element[5]}T20:30:12`
         }
       ));
-      console.log(`${JSON.stringify(listAnalysis)}`);
-      this.setState({ listAnalysis, patientAddress });
-    } catch(err) {
+
+      this.setState({ listAnalysis });
+    } catch (err) {
       console.log(err);
-    } 
+    }
     this.setState({ loading: false });
+  }
+
+  async componentDidMount() {
+    const accounts = await web3.eth.getAccounts();
+    console.log(`accounts: ${accounts}`);
+    const myRole = await healthSystem.methods.getMyRole().call({ from: accounts[0] });
+    console.log(`numOfRecords: ${JSON.stringify(patientRecords.items.length)}`);
+
+    console.log('myrole', myRole)
+    if (myRole === '3') {
+      this.getRecords(accounts[0]);
+    }
+  }
+
+  onSubmit () {
+    this.getRecords(this.state.patientAddress)
+  }
+
+  onAddressChange (event) {
+    this.setState({ patientAddress: event.target.value });
   }
 
   render() {
     return (
       <div>
-        <h3 style={{ marginBottom: '50px' }}>List of  {this.state.listAnalysis.length} analysis records for {this.state.patientAddress}</h3>
-        {this.state.listAnalysis.map((item, idx) => <RecordItem key={idx} item={item} patient={this.state.patientAddress}/>)}
+        <h3 style={{ marginBottom: '50px' }}>List of analysis records: {this.state.listAnalysis.length}</h3>
+        {this.state.patient_address ?
+          this.state.listAnalysis.map((item, idx) => <RecordItem key={idx} item={item} patient={this.state.patientAddress} />) :
+          <div><input type="text" placeholder="Enter patient address" onChange={(event) => this.onAddressChange(event)} value={this.state.patientAddress} /><Button onClick={() => this.onSubmit()}>Submit</Button></div>
+        }
       </div>
     );
   }
@@ -109,5 +133,6 @@ const RecordItem = ({item:{date, doctor, score, reward}, patient}) =>
     <span ><img style={{width: '18px'}} src="/static/if_ETH_1175230.png" /></span>
     <span style={{marginRight: '5px'}}>{reward/1E+6}</span>
   </div>
-  <div className="record-item-detail"><a href={`/patient/analysis-details?p=${patient}&d=${doctor}`}>Detail</a></div>
+
+  <a className="record-item-detail" href={"/patient/analysis-details"}>Detail</a>
 </div>

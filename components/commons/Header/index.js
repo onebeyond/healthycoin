@@ -9,7 +9,8 @@ const navItemsRole = {
     {url: '/admin/submitThresholds', label: 'MANAGE INDICATORS'}
   ],
   doctor: [
-    {url: '/doctor/submitAnalysis', label: 'SUBMIT ANALYSIS'}
+    {url: '/doctor/submitAnalysis', label: 'SUBMIT ANALYSIS'},
+    { url: '/doctor/listRecords', label: 'LIST RECORDS' }
   ],
   patient: [
     {url: '/patient/analysisDetails', label: 'ANALYSIS DETAILS'},
