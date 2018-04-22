@@ -60,15 +60,15 @@ export default class ListRecords extends React.Component {
   render() {
     return (
       <div>
-        <h3 style={{marginBottom: '50px'}}>List of analysis records: {patientRecords.items.length}</h3>
-        {patientRecords.items.map((item,idx) => <RecordItem key={idx} item={item}/>)}
+        <h3 style={{marginBottom: '50px'}}>List of {patientRecords.items.length} analysis records for {patientRecords.id}</h3>
+        {patientRecords.items.map((item,idx) => <RecordItem key={idx} item={item} patient={patientRecords.id}/>)}
       </div>
     );
   }
 }
 
 
-const RecordItem = ({item:{date, doctor_id, score, reward}}) => 
+const RecordItem = ({item:{date, doctor_id, score, reward}, patient}) => 
 <div className="record-item">
   <div className="record-item-date">
     <div className="record-item-date-top">{getMonth(date)} {getDay(date)}</div>
@@ -80,5 +80,5 @@ const RecordItem = ({item:{date, doctor_id, score, reward}}) =>
     <span ><img style={{width: '18px'}} src="/static/if_ETH_1175230.png" /></span>
     <span style={{marginRight: '5px'}}>{reward/1E+6}</span>
   </div>
-  <div className="record-item-detail">Detail</div>
+  <div className="record-item-detail"><a href={`/patient/analysis-details?p=${patient}&d=${doctor_id}`}>Detail</a></div>
 </div>
