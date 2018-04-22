@@ -383,7 +383,7 @@ export default class Dashboard extends Component {
             <Row className={'bottom-chart-row'}>
               <Col xs={8} md={8}>
                 <Row>
-                  <span class="ether-rewards-title">Overall</span>
+                  <span className="ether-rewards-title">Overall</span>
                 </Row>
                 <Row>
                   <LinesChart data={scorePerMonth} />
@@ -391,7 +391,7 @@ export default class Dashboard extends Component {
               </Col>
               <Col xs={4} md={4}>
                 <Row>
-                  <span class="ether-rewards-title">At a glance 2017</span>
+                  <span className="ether-rewards-title">At a glance 2017</span>
                 </Row>
                 <Row>
                   <Insights data={scorePerMonth} />
