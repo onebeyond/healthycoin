@@ -45,7 +45,8 @@ export default class ListRecords extends React.Component {
       hematocrits: '',
       chreatin: '',
       hemoglobin: '',
-      loading: false
+      loading: false,
+      listAnalysis: [],
     };
   }
 
@@ -55,30 +56,58 @@ export default class ListRecords extends React.Component {
     const myRole = await healthSystem.methods.getMyRole().call({ from: accounts[0] });
     console.log(`numOfRecords: ${JSON.stringify(patientRecords.items.length)}`);
     // this.setState({ account: accounts[0], numOfRecords });
+    
+    this.setState({ loading: true });
+    
+    try {
+      const patientAddress = '0x4c96933df32BF4fD6F70165Bf303fcb57f14929d';
+      const numAnalysis = await healthSystem.methods.getNumberAnalysis(patientAddress).call({ from: accounts[0] });
+      console.log(numAnalysis)
+      const listRetrieved = await Promise.all(
+        Array(parseInt(numAnalysis)).fill().map((element, index) => {
+          return healthSystem.methods.getAnalysis(patientAddress, index).call({ from: accounts[0] });
+        })
+      );
+
+      const listAnalysis = listRetrieved.map((element) => (
+        {
+          doctor: element[2],
+          score: element[6],
+          reward: element[7],
+          unit: 'ether',
+          date: `${element[3]}-${element[4]}-${element[5]}T20:30:12`
+        }
+      ));
+      console.log(`${JSON.stringify(listAnalysis)}`);
+      this.setState({ listAnalysis, patientAddress });
+    } catch(err) {
+      console.log(err);
+    } 
+    this.setState({ loading: false });
   }
 
   render() {
     return (
       <div>
-        <h3 style={{marginBottom: '50px'}}>List of {patientRecords.items.length} analysis records for {patientRecords.id}</h3>
-        {patientRecords.items.map((item,idx) => <RecordItem key={idx} item={item} patient={patientRecords.id}/>)}
+        <h3 style={{ marginBottom: '50px' }}>List of  {this.state.listAnalysis.length} analysis records for {this.state.patientAddress}</h3>
+        {this.state.listAnalysis.map((item, idx) => <RecordItem key={idx} item={item} patient={this.state.patientAddress}/>)}
       </div>
     );
   }
 }
 
 
-const RecordItem = ({item:{date, doctor_id, score, reward}, patient}) => 
+const RecordItem = ({item:{date, doctor, score, reward}, patient}) => 
 <div className="record-item">
   <div className="record-item-date">
     <div className="record-item-date-top">{getMonth(date)} {getDay(date)}</div>
     <div className="record-item-date-bottom">{getFullYear(date)}</div>
   </div>
-  <div className="record-item-doctor">Health Check by Dr. {doctor_id}</div>
+  <div className="record-item-doctor">Health Check by Dr. {doctor}</div>
   <div className="record-item-reward">
     <span style={{marginRight: '5px'}}>{score}% Threshold</span>
     <span ><img style={{width: '18px'}} src="/static/if_ETH_1175230.png" /></span>
     <span style={{marginRight: '5px'}}>{reward/1E+6}</span>
   </div>
-  <div className="record-item-detail"><a href={`/patient/analysis-details?p=${patient}&d=${doctor_id}`}>Detail</a></div>
+  <div className="record-item-detail"><a href={`/patient/analysis-details?p=${patient}&d=${doctor}`}>Detail</a></div>
 </div>
