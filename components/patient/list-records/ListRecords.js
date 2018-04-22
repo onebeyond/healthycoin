@@ -16,6 +16,11 @@ import healthSystem from '../../../ethereum/healthSystem';
 import patientRecords from '../../../server/mocks/patient-list-records.json';
 import './style.scss';
 
+const getDate = strDate => new Date(strDate)
+const getDay = strDate => strDate.split('T')[0].split('-')[0]
+const getMonth = strDate => new Date(strDate.split('T')[0].split('-').reverse()).toLocaleDateString('en', {month: 'short'})
+const getFullYear = strDate => strDate.split('T')[0].split('-')[2]
+
 const matchArr = {
   1: 'cholesterol',
   2: 'sugar',
@@ -63,13 +68,17 @@ export default class ListRecords extends React.Component {
 }
 
 
-const RecordItem = ({item:{date}}) => 
+const RecordItem = ({item:{date, doctor, score, reward}}) => 
 <div className="record-item">
   <div className="record-item-date">
-    <div className="record-item-date-top">Day</div>
-    <div className="record-item-date-bottom">Year</div>
+    <div className="record-item-date-top">{getMonth(date)} {getDay(date)}</div>
+    <div className="record-item-date-bottom">{getFullYear(date)}</div>
   </div>
-  <div className="record-item-doctor">0x536Fd5687BCDFFDE</div>
-  <div className="record-item-reward">145</div>
+  <div className="record-item-doctor">Health Check by Dr. {doctor}</div>
+  <div className="record-item-reward">
+    <span style={{marginRight: '5px'}}>{score}% Threshold</span>
+    <span ><img style={{width: '18px'}} src="/static/if_ETH_1175230.png" /></span>
+    <span style={{marginRight: '5px'}}>{reward/1E+6}</span>
+  </div>
   <div className="record-item-detail">Detail</div>
 </div>

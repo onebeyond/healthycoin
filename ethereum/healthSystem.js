@@ -3,7 +3,7 @@ import HealthSystem from './build/HealthSystem.json';
 
 const instance = new web3.eth.Contract(
   JSON.parse(HealthSystem.interface),
-  '0x6cedA9432b7dae10B10621ebad39FD8e20d85843'
+  '0xe8DBd7A251eFEebff57ED0d99b829C2C93DCedc8'
 );
 // retrieved when run "node deploy.js"
 

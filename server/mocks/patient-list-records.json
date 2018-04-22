@@ -3,7 +3,7 @@
   "items": [
     {
       "doctor_id": "0x536Fd5687BCDFFDE",
-      "score": 85,
+      "score": 65,
       "reward": 145,
       "unit": "ether",
       "date": "20-05-2018T20:30:12",
@@ -23,7 +23,7 @@
     },
     {
       "doctor_id": "0x536Fd5687BCDFFDE",
-      "score": 80,
+      "score": 70,
       "reward": 285,
       "unit": "ether",
       "date": "20-04-2018T20:30:12",
@@ -63,7 +63,7 @@
     },
     {
       "doctor_id": "0x536Fd5687BCDFFDE",
-      "score": 92,
+      "score": 82,
       "reward": 276,
       "unit": "ether",
       "date": "20-02-2018T20:30:12",
@@ -83,7 +83,7 @@
     },
     {
       "doctor_id": "0x536Fd5687BCDFFDE",
-      "score": 93,
+      "score": 83,
       "reward": 145,
       "unit": "ether",
       "date": "20-01-2018T20:30:12",
