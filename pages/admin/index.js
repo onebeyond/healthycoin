@@ -14,6 +14,9 @@ export default class AdminIndex extends Component {
         <Link route="/admin/addDoctor">
           <Button><a className="item">Add doctors</a></Button>
         </Link>
+        <Link route="/admin/add-patient">
+          <Button><a className="item">Add patients</a></Button>
+        </Link>
         <div>
           <IndexDash />
         </div>
