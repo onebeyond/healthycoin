@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DashCard from '../../commons/DashCard';
-import { Grid, Row, Column } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 export default class IndexDash extends Component {
   static async getInitialProps() {
@@ -8,26 +8,26 @@ export default class IndexDash extends Component {
     console.log('accounts', accounts)
     return { accounts };
   };
-  
+
   render() {
     return (
       <Grid>
-        <div>
-          <div md={6}>
-            <DashCard icon="a" label="3" subLabel="Adminastrators" />
-          </div>
-          <div md={6}>
+        <Row className="show-grid">
+          <Col md={6}>
+            <DashCard icon="a" label="3" subLabel="Administrators" />
+          </Col>
+          <Col md={6}>
             <DashCard icon="a" label="3" subLabel="Doctors" />
-          </div>
-        </div>
-        <div>
-          <div md={6}>
+          </Col>
+        </Row>
+        <Row className="show-grid">
+          <Col md={6}>
             <DashCard icon="a" label="3" subLabel="Patients" />
-          </div>
-          <div md={6}>
+          </Col>
+          <Col md={6}>
             <DashCard icon="a" label="3" subLabel="Analysis submitted" />
-          </div>
-        </div>
+          </Col>
+        </Row>
       </Grid>
     );
   }
