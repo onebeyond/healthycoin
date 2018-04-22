@@ -42,19 +42,19 @@ export default class IndexDash extends Component {
         <Row>
           <Col md={6}>
             <div className={'wrapper-dashcard wrapper-dashcard-odd'}>
-              <DashCard icon="report.png" label={this.state.admins} subLabel="Administrators" customStyle={'dashcard-tread'} />
+              <DashCard icon="user-2@3x.png" label={this.state.admins} subLabel="Administrators" customStyle={'dashcard-tread'} />
             </div>
           </Col>
           <Col md={6}>
             <div className={'wrapper-dashcard'}>
-              <DashCard icon="report.png" label={this.state.admins}  subLabel="Doctors" customStyle={'dashcard-tread'} />
+              <DashCard icon="user-2@3x.png" label={this.state.admins}  subLabel="Doctors" customStyle={'dashcard-tread'} />
             </div>
           </Col>
         </Row>
         <Row className="show-grid">
           <Col md={6}>
             <div className={'wrapper-dashcard wrapper-dashcard-odd'}>
-              <DashCard icon="report.png" label={this.state.patients}  subLabel="Patients" customStyle={'dashcard-tread'} />
+              <DashCard icon="user-2@3x.png" label={this.state.patients}  subLabel="Patients" customStyle={'dashcard-tread'} />
             </div>
           </Col>
           <Col md={6}>
