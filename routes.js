@@ -7,5 +7,6 @@ routes
   .add('/doctor/add-patient', '/doctor/addPatient')
   .add('/patient/analysis-details', '/patient/analysisMetrics')
   .add('/owner/add-admin', '/owner/addAdmin');
+  .add('/patient/index', '/patient/withdraw');
 
 module.exports = routes;
