@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import '../../styles/bootstrap.scss';
 import { Link } from '../../routes';
 import Layout from '../../components/commons/Layout';
+import IndexDash from '../../components/admin/IndexDash';
 
 
 export default class AdminIndex extends Component {
@@ -13,6 +14,9 @@ export default class AdminIndex extends Component {
         <Link route="/admin/addDoctor">
           <Button><a className="item">Add doctors</a></Button>
         </Link>
+        <div>
+          <IndexDash />
+        </div>
       </Layout>
     );
   }
