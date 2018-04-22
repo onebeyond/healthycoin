@@ -1,12 +1,37 @@
 import React, { Component } from 'react';
 import DashCard from '../../commons/DashCard';
 import { Grid, Row, Col } from 'react-bootstrap';
+import web3 from '../../../ethereum/web3';
+import healthSystem from '../../../ethereum/healthSystem';
 
 export default class IndexDash extends Component {
   static async getInitialProps() {
     const accounts = await web3.eth.getAccounts();
     console.log('accounts', accounts)
+    
     return { accounts };
+  };
+
+  async componentDidMount() {
+    console.log('componentDidMount');
+    const info = await Promise.all([
+      healthSystem.methods.getNumAdmins().call(),
+      healthSystem.methods.getNumDoctors().call(),
+      healthSystem.methods.getNumPatients().call(),
+      healthSystem.methods.getTotalNumberAnalysis().call(),
+    ]);
+
+    const [admins, doctors, patients, analysis] = info;
+    console.log(info)
+
+    this.setState({ admins, doctors, patients, analysis })
+  }
+
+  state = {
+    admins: 0, 
+    doctors: 0,
+    patients: 0,
+    analysis: 0,
   };
 
   render() {
@@ -14,18 +39,18 @@ export default class IndexDash extends Component {
       <Grid>
         <Row className="show-grid">
           <Col md={6}>
-            <DashCard icon="a" label="3" subLabel="Administrators" />
+            <DashCard icon="report.png" label={this.state.admins} subLabel="Administrators" />
           </Col>
           <Col md={6}>
-            <DashCard icon="a" label="3" subLabel="Doctors" />
+            <DashCard icon="report.png" label={this.state.doctors} subLabel="Doctors" />
           </Col>
         </Row>
         <Row className="show-grid">
           <Col md={6}>
-            <DashCard icon="a" label="3" subLabel="Patients" />
+            <DashCard icon="report.png" label={this.state.patients} subLabel="Patients" />
           </Col>
           <Col md={6}>
-            <DashCard icon="a" label="3" subLabel="Analysis submitted" />
+            <DashCard icon="report.png" label={this.state.analysis} subLabel="Analysis submitted" />
           </Col>
         </Row>
       </Grid>

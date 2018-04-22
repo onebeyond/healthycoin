@@ -4,59 +4,71 @@ import { Link } from '../../../routes';
 
 export default class Header extends Component {
   navItemsRole = [
-    ['/admin/addDoctor', '/doctor/addPatient', '/dashboard'],
+    ['/admin/addDoctor', '/admin/addPatient', '/dashboard'],
     [''],
-    ['oneLink', 'twoLink', 'anotherLink']
+    ['ADD DOCTOR', 'ADD PATIENT', 'DASHBOARD']
   ];
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      role: 'admin',
-      navActive: [false, false, false]
-    };
-    this.onClickNav = this.onClickNav.bind(this);
+   constructor(props) {
+     super(props);
+     this.state = {
+       role: this.props.role,
+       navActive: [false, false, false]
+     }
+   }
+
+ returnAddDoctor(role) {
+  role = true;
+  if (role) {
+      return  <NavItem
+          onClick={this.onClickNav}
+          eventKey={1}
+          href={this.navItemsRole[0][0]}
+>
+         {this.navItemsRole[2][0]}
+        </NavItem>
   }
+    return <p></p>;
+  }
+
+  returnAddPatient(role) {
+    role = true;
+     if (role) {
+       return <NavItem
+          onClick={this.onClickNav}
+          eventKey={2}
+          href={this.navItemsRole[0][1]}
+        >
+         {this.navItemsRole[2][1]}
+        </NavItem>
+   }
+     return <p></p>;
+   }
 
   onClickNav(event) {
     console.log('Nav');
     console.log(event);
   }
   render() {
-    const { navActive } = this.state;
+    //const { navActive } = this.state;
     return (
       <Navbar fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
             <Link route={"/"}>
               <a>
-                <img src={"../../static/logoEther.png"} style={{ height: '45px', margin: '2px 0' }} /> 
-              </a>
+                <img src={"../../static/logoEther.png"} style={{ height: '45px', margin: '2px 0' }} />
+             </a>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem
+           {this.returnAddDoctor(this.state.role)}
+           {this.returnAddPatient(this.state.role)}
+              <NavItem
               onClick={this.onClickNav}
-              active={navActive[0]}
-              eventKey={1}
-              href={this.navItemsRole[0][0]}
-            >
-              ADD DOCTOR
-            </NavItem>
-            <NavItem
-              onClick={this.onClickNav}
-              active={navActive[1]}
-              eventKey={2}
-              href={this.navItemsRole[0][1]}
-            >
-              ADD PATIENT
-            </NavItem>
-            <NavItem
-              onClick={this.onClickNav}
-              active={navActive[2]}
               eventKey={3}
               href={this.navItemsRole[0][2]}
             >
