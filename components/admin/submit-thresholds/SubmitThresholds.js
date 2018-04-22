@@ -114,7 +114,7 @@ export default class SubmitThresholds extends React.Component {
               ) : (
                 ''
               )}{' '}
-              Submit Analysis
+              Submit
             </Button>
           </form>
         </Row>

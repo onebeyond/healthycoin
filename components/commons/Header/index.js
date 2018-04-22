@@ -6,7 +6,7 @@ const navItemsRole = {
   admin: [
     {url: '/admin/addDoctor', label: 'ADD DOCTOR'},
     {url: '/admin/addPatient', label: 'ADD PATIENT'},
-    {url: '/admin/submitThresholds', label: 'SUBMIT TRESHOLDS'}
+    {url: '/admin/submitThresholds', label: 'MANAGE INDICATORS'}
   ],
   doctor: [
     {url: '/doctor/submitAnalysis', label: 'SUBMIT ANALYSIS'}
