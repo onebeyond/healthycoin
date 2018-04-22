@@ -34,13 +34,7 @@ export default props => {
                   <p>{indicator.range}</p>
                 </div>
                 <div className="col-sm-4">
-                  <FormControl
-                    type="text"
-                    placeholder="Quantity"
-                    name={indicator.key}
-                    onChange={handleChange}
-                    id="customFormControl"
-                  />
+                  <p>{indicator.value}</p>
                 </div>
               </div>
             </ListGroupItem>
