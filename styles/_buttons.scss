@@ -10,6 +10,7 @@
   display: inline-block;
   margin-bottom: 0; // For input.btn
   font-weight: $btn-font-weight;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.5);
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -23,7 +24,6 @@
   transition: all 0.3 ease;
   @include button-size($padding-base-vertical, $padding-base-horizontal, $font-size-base, $line-height-base, $btn-border-radius-base);
   @include user-select(none);
-
   &,
   &:active,
   &.active {
