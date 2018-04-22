@@ -4,7 +4,7 @@ import { Link } from '../../../routes';
 
 export default class Header extends Component {
   navItemsRole = [
-    ['/admin/addDoctor', '/doctor/addPatient', '/dashboard'],
+    ['/admin/addDoctor', '/admin/addPatient', '/dashboard'],
     [''],
     ['ADD DOCTOR', 'ADD PATIENT', 'DASHBOARD']
   ];
