@@ -1,0 +1,165 @@
+{
+  "id": "0x87BCDFFDE536Fd56",
+  "items": [
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 85,
+      "reward": 145,
+      "unit": "ether",
+      "date": "20-05-2018T20:30:12",
+      "indicators": [
+        "cholesterol",
+        "sugar",
+        "blood_pressure",
+        "heart_rate",
+        "saturated_fat",
+        "hematocrits",
+        "chreatin",
+        "hemoglobin"
+      ],
+      "values": [
+        1, 10, 3, 33, 42, 92, 20, 100
+      ]
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 80,
+      "reward": 285,
+      "unit": "ether",
+      "date": "20-04-2018T20:30:12",
+      "indicators": [
+        "cholesterol",
+        "sugar",
+        "blood_pressure",
+        "heart_rate",
+        "saturated_fat",
+        "hematocrits",
+        "chreatin",
+        "hemoglobin"
+      ],
+      "values": [
+        5, 92, 6, 2, 29, 2, 76, 83
+      ]
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 79,
+      "reward": 762,
+      "unit": "ether",
+      "date": "20-03-2018T20:30:12",
+      "indicators": [
+        "cholesterol",
+        "sugar",
+        "blood_pressure",
+        "heart_rate",
+        "saturated_fat",
+        "hematocrits",
+        "chreatin",
+        "hemoglobin"
+      ],
+      "values": [
+        1, 39, 32, 56, 18, 19, 29, 11
+      ]
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 92,
+      "reward": 276,
+      "unit": "ether",
+      "date": "20-02-2018T20:30:12",
+      "indicators": [
+        "cholesterol",
+        "sugar",
+        "blood_pressure",
+        "heart_rate",
+        "saturated_fat",
+        "hematocrits",
+        "chreatin",
+        "hemoglobin"
+      ],
+      "values": [
+        19, 6, 87, 29, 28, 6, 92, 11
+      ]
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 93,
+      "reward": 145,
+      "unit": "ether",
+      "date": "20-01-2018T20:30:12",
+      "indicators": [
+        "cholesterol",
+        "sugar",
+        "blood_pressure",
+        "heart_rate",
+        "saturated_fat",
+        "hematocrits",
+        "chreatin",
+        "hemoglobin"
+      ],
+      "values": [
+        1, 10, 3, 33, 42, 92, 20, 100
+      ]
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 78,
+      "reward": 145,
+      "unit": "ether",
+      "date": "20-12-2017T20:30:12",
+      "indicators": [
+        "cholesterol",
+        "sugar",
+        "blood_pressure",
+        "heart_rate",
+        "saturated_fat",
+        "hematocrits",
+        "chreatin",
+        "hemoglobin"
+      ],
+      "values": [
+        8, 62, 45, 12, 11, 98, 7, 24
+      ]
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 90,
+      "reward": 145,
+      "unit": "ether",
+      "date": "20-11-2017T20:30:12",
+      "indicators": [
+        "cholesterol",
+        "sugar",
+        "blood_pressure",
+        "heart_rate",
+        "saturated_fat",
+        "hematocrits",
+        "chreatin",
+        "hemoglobin"
+      ],
+      "values": [
+        1, 12, 19, 11, 97, 6, 1, 22
+      ]
+    },
+    {
+      "doctor_id": "0x536Fd5687BCDFFDE",
+      "score": 88,
+      "reward": 145,
+      "unit": "ether",
+      "date": "20-10-2017T20:30:12",
+      "indicators": [
+        "cholesterol",
+        "sugar",
+        "blood_pressure",
+        "heart_rate",
+        "saturated_fat",
+        "hematocrits",
+        "chreatin",
+        "hemoglobin"
+      ],
+      "values": [
+        1, 10, 3, 33, 2, 66, 20, 99
+      ]
+    }
+  ]
+}
