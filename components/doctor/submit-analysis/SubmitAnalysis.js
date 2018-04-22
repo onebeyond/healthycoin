@@ -72,12 +72,10 @@ export default class SubmitAnalisys extends React.Component {
     try {
       const accounts = await web3.eth.getAccounts();
       await HealthSystem.methods
-<<<<<<< Updated upstream
+
         .addPatient(addressPatient)
         .send({ from: accounts[0] });
       await HealthSystem.methods
-        .addAnalysis(indicators, values, addressPatient, day, month, year)
-=======
         .addAnalysis(
           indicators,
           values,
@@ -86,7 +84,6 @@ export default class SubmitAnalisys extends React.Component {
           month,
           year
         )
->>>>>>> Stashed changes
         .send({ from: accounts[0] });
     } catch (err) {
       console.log(err);

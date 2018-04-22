@@ -14,7 +14,7 @@ export default class DoctorIndex extends Component {
     return (
       <Layout>
         <h3>Doctor page!!</h3>
-        <Cards options={options} />
+       {true || <Cards options={options} />}
       </Layout>
     );
 
