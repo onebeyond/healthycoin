@@ -60,7 +60,7 @@ export default class ListRecords extends React.Component {
   render() {
     return (
       <div>
-        <p>{patientRecords.items.length}</p>
+        <h3 style={{marginBottom: '50px'}}>List of analysis records: {patientRecords.items.length}</h3>
         {patientRecords.items.map((item,idx) => <RecordItem key={idx} item={item}/>)}
       </div>
     );
@@ -68,13 +68,13 @@ export default class ListRecords extends React.Component {
 }
 
 
-const RecordItem = ({item:{date, doctor, score, reward}}) => 
+const RecordItem = ({item:{date, doctor_id, score, reward}}) => 
 <div className="record-item">
   <div className="record-item-date">
     <div className="record-item-date-top">{getMonth(date)} {getDay(date)}</div>
     <div className="record-item-date-bottom">{getFullYear(date)}</div>
   </div>
-  <div className="record-item-doctor">Health Check by Dr. {doctor}</div>
+  <div className="record-item-doctor">Health Check by Dr. {doctor_id}</div>
   <div className="record-item-reward">
     <span style={{marginRight: '5px'}}>{score}% Threshold</span>
     <span ><img style={{width: '18px'}} src="/static/if_ETH_1175230.png" /></span>
