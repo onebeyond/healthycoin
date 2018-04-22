@@ -2,47 +2,34 @@ import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { Link } from '../../../routes';
 
-export default class Header extends Component {
-  navItemsRole = [
-    ['/admin/addDoctor', '/admin/addPatient', '/dashboard'],
-    [''],
-    ['ADD DOCTOR', 'ADD PATIENT', 'DASHBOARD']
-  ];
+const navItemsRole = {
+  admin: [
+    {url: '/admin/addDoctor', label: 'ADD DOCTOR'},
+    {url: '/admin/addPatient', label: 'ADD PATIENT'},
+    {url: '/admin/analysisMetrics', label: 'ANALYSIS METRICS'},
+    {url: '/admin/submitThresholds', label: 'SUBMIT TRESHOLDS'}
+  ],
+  doctor: [
+    {url: '/doctor/submitAnalysis', label: 'SUBMIT ANALYSIS'}
+  ],
+  patient: [
+    {url: '/patient/analysisDetails', 'ANALYSIS DETAILS'},
+    {url: '/patient/listRecords', 'LIST RECORDS'}
+  ],
+  owner: [
+    {url: '/owner/analysisDetails', 'ADD ADMIN'}
+  ]
+}
 
-   constructor(props) {
+export default class Header extends Component {
+
+  constructor(props) {
      super(props);
+     console.log('props', props);
      this.state = {
        role: this.props.role,
        navActive: [false, false, false]
      }
-   }
-
- returnAddDoctor(role) {
-  role = true;
-  if (role) {
-      return  <NavItem
-          onClick={this.onClickNav}
-          eventKey={1}
-          href={this.navItemsRole[0][0]}
->
-         {this.navItemsRole[2][0]}
-        </NavItem>
-  }
-    return <p></p>;
-  }
-
-  returnAddPatient(role) {
-    role = true;
-     if (role) {
-       return <NavItem
-          onClick={this.onClickNav}
-          eventKey={2}
-          href={this.navItemsRole[0][1]}
-        >
-         {this.navItemsRole[2][1]}
-        </NavItem>
-   }
-     return <p></p>;
    }
 
   onClickNav(event) {
@@ -65,15 +52,14 @@ export default class Header extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-           {this.returnAddDoctor(this.state.role)}
-           {this.returnAddPatient(this.state.role)}
-              <NavItem
+
+           {this.state.role && navItemsRole[this.state.role].map((navItemValues => <NavItem
               onClick={this.onClickNav}
-              eventKey={3}
-              href={this.navItemsRole[0][2]}
+              href={navItemValues.url}
             >
-              DASHBOARD
-            </NavItem>
+              {navItemValues.label}
+            </NavItem>))}
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>

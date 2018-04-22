@@ -14,28 +14,30 @@ const rolesPath = {
 };
 
 export default class Layout extends Component {
-  static async getInitialProps() {
-    const accounts = await web3.eth.getAccounts();
-    return { accounts };
-  };
 
-  state = {
-    role: -1,
-    account: '',
-    roleName: ''
+  constructor(props){
+    super(props)
+
+    this.state = {
+      role: -1,
+      account: '',
+      roleName: ''
+    }
   }
 
   async componentDidMount() {
     const accounts = await web3.eth.getAccounts();
     const myRole = await healthSystem.methods.getMyRole().call({ from: accounts[0] });
+    console.log("role");
     this.setState({ role: myRole, account: accounts[0], roleName: rolesPath[myRole]})
+    return { accounts };
   }
 
   render() {
     return (
       <div className={'layout'}>
        <img className={'background-top'} src={'/static/background.png'} alt="" />
-        <Header role={this.state.roleName} role2={this.state.roleName}/>
+        {this.state.roleName !== '' && <Header role={this.state.roleName}/>}
         <Grid style={{ minHeight: 'calc(100vh - 200px)' }}>{this.props.children}</Grid>
         <Footer />
       </div>
