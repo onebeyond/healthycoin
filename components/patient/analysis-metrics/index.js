@@ -20,10 +20,12 @@ export default props => {
                 borderRadius: '10px',
                 backgroundColor: '#b6e1fd',
                 width: '92%',
-                margin: 'auto'
+                margin: 'auto',
+                textIndent: '14px'
               }}
             >
-              {indicator.category}
+              {indicator.category.charAt(0).toUpperCase() +
+                indicator.category.slice(1)}
             </div>
             <ListGroupItem id="listAnalysisItem">
               <div className="row">
