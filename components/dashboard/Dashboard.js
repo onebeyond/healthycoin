@@ -380,7 +380,7 @@ export default class Dashboard extends Component {
                 <MonthlyStats data={scorePerMonth} />
               </Col>
             </Row>
-            <Row className={'bottom-chart-row'}>
+            <Row>
               <Col xs={8} md={8}>
                 <Row>
                   <span className="ether-rewards-title">Overall</span>
