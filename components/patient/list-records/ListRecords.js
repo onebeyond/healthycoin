@@ -45,7 +45,8 @@ export default class ListRecords extends React.Component {
       hematocrits: '',
       chreatin: '',
       hemoglobin: '',
-      loading: false
+      loading: false,
+      listAnalysis: [],
     };
   }
 
@@ -55,13 +56,41 @@ export default class ListRecords extends React.Component {
     const myRole = await healthSystem.methods.getMyRole().call({ from: accounts[0] });
     console.log(`numOfRecords: ${JSON.stringify(patientRecords.items.length)}`);
     // this.setState({ account: accounts[0], numOfRecords });
+    
+    this.setState({ loading: true });
+    
+    try {
+      const patientAddress = '0x4c96933df32BF4fD6F70165Bf303fcb57f14929d';
+      const numAnalysis = await healthSystem.methods.getNumberAnalysis(patientAddress).call({ from: accounts[0] });
+      console.log(numAnalysis)
+      const listRetrieved = await Promise.all(
+        Array(parseInt(numAnalysis)).fill().map((element, index) => {
+          return healthSystem.methods.getAnalysis(patientAddress, index).call({ from: accounts[0] });
+        })
+      );
+
+      const listAnalysis = listRetrieved.map((element) => (
+        {
+          doctor: element[2],
+          score: element[6],
+          reward: element[7],
+          unit: 'ether',
+          date: `${element[3]}-${element[4]}-${element[5]}T20:30:12`
+        }
+      ));
+
+      this.setState({ listAnalysis });
+    } catch(err) {
+      console.log(err);
+    } 
+    this.setState({ loading: false });
   }
 
   render() {
     return (
       <div>
-        <h3 style={{marginBottom: '50px'}}>List of analysis records: {patientRecords.items.length}</h3>
-        {patientRecords.items.map((item,idx) => <RecordItem key={idx} item={item}/>)}
+        <h3 style={{ marginBottom: '50px' }}>List of analysis records: {this.state.listAnalysis.length}</h3>
+        {this.state.listAnalysis.map((item, idx) => <RecordItem key={idx} item={item} />)}
       </div>
     );
   }
