@@ -113,7 +113,7 @@ contract HealthSystem {
         _;
     }
 
-    function addPatient(address patient) public isDoctorOrOwner{
+    function addPatient(address patient) public isAdminOrOwner{
         require(!patients[patient].valid);
         patients[patient].valid = true;
         numPatients++;
