@@ -69,7 +69,11 @@ const RecordItem = ({item:{date}}) =>
     <div className="record-item-date-top">Day</div>
     <div className="record-item-date-bottom">Year</div>
   </div>
-  <div className="record-item-doctor">0x536Fd5687BCDFFDE</div>
-  <div className="record-item-reward">145</div>
+  <div className="record-item-doctor">Health Check by Dr. 0x536Fd5687BCDFFDE</div>
+  <div className="record-item-reward">
+    <span style={{marginRight: '5px'}}>85% Threshold</span>
+    <span ><img style={{width: '18px'}} src="/static/if_ETH_1175230.png" /></span>
+    <span style={{marginRight: '5px'}}>0.000058</span>
+  </div>
   <div className="record-item-detail">Detail</div>
 </div>
