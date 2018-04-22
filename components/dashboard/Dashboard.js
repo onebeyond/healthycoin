@@ -215,8 +215,8 @@ const Wheel = (props) => (
   <VictoryPie innerRadius={100} {...props}/>
 );
 
-const SpiderChart = ({ props }) => (
-  <VictoryChart polar domain={{ y: [0, 25000]}} theme={VictoryTheme.material}>
+const SpiderChart = (props) => (
+  <VictoryChart polar domain={{ y: [0, 100]}} theme={VictoryTheme.material}>
     <VictoryPolarAxis dependentAxis style={{ axis: { stroke: "none" } }} tickFormat={() => null}/>
     <VictoryPolarAxis/>
     <VictoryLine
@@ -257,11 +257,8 @@ const LinesChart = ({ data }) => (
     <VictoryLine data={data2} x="month" y="value" style={{ data: { stroke: "#ed684a" }}} />
     <VictoryLine data={data3} x="month" y="value" style={{ data: { stroke: "#57c9c1" }}} />
     <VictoryLegend
-      title="Overall"
-      centerTitle
-      titleOrientation="left"
       orientation="horizontal"
-      gutter={20}
+      gutter={10}
       data={[
         { name: "Thresholds achievements", symbol: { fill: "#0c9bf9" } },
         { name: "National spent", symbol: { fill: "#ed684a" } },
@@ -269,8 +266,7 @@ const LinesChart = ({ data }) => (
       ]}
       style={{
         data: { fill: "blue", stroke: "black", strokeWidth: .5 },
-        labels: { fill: "black", fontSize: 8 },
-        title: { fontSize: 12 }
+        labels: { fill: "black", fontSize: 8 }
       }}
     />
   </VictoryChart>
@@ -281,7 +277,9 @@ const Insights = ({ data }) => (
     <ListGroupItem>Life expectancy 89 years old <Glyphicon glyph="menu-up" style={{ color: '#50e3c2' }}/></ListGroupItem>
     <ListGroupItem>Smoking 18% daily adult smokers</ListGroupItem>
     <ListGroupItem>Alcohol 9 liters/year</ListGroupItem>
+    <ListGroupItem>25% phisically inactive</ListGroupItem>
     <ListGroupItem>19% obesity</ListGroupItem>
+    <ListGroupItem>90% eat excessive sodium</ListGroupItem>
     <ListGroupItem>Health spending 16% <Glyphicon glyph="menu-down" style={{color: '#ed684a'}} /></ListGroupItem>
     <ListGroupItem>Ethereum rewards 120.5 <Glyphicon glyph="menu-up" style={{color: '#50e3c2'}} /></ListGroupItem>
   </ListGroup>
@@ -293,7 +291,7 @@ const WeekStats = ({ data }) => (
       <Row>
         <div className={'topGraphicTitles topGraphicTitlesFirst'}>
           <span className={'title'}>465</span>
-          <span className={'subtitle'}>Analisys Submited YTD</span>
+          <span className={'subtitle'}>Analisys Submitted</span>
         </div>
       </Row>
       <Row>
@@ -325,7 +323,7 @@ const MonthlyStats = ({ data }) => (
       <Row>
         <div className={'topGraphicTitles'}>
           <span className={'title'}>4569</span>
-          <span className={'subtitle'}>Patients total</span>
+          <span className={'subtitle'}>Total patients</span>
         </div>
       </Row>
       <Row>
@@ -371,8 +369,8 @@ export default class Dashboard extends Component {
 
   render () {
     return (
-      <Grid>
-        <Row className={'show-grid'}>
+      <Grid className={'dash-main'}>
+        <Row className={'show-grid dash-row'}>
           <Col xs={6} md={9}>
             <Row>
               <Col xs={6} md={6} className={'dashBorderBottom dashBorderTop'}>
@@ -382,13 +380,18 @@ export default class Dashboard extends Component {
                 <MonthlyStats data={scorePerMonth} />
               </Col>
             </Row>
-            <Row>
+            <Row className={'bottom-chart-row'}>
               <Col xs={8} md={8}>
-                <LinesChart data={scorePerMonth} />
+                <Row>
+                  <span class="ether-rewards-title">Overall</span>
+                </Row>
+                <Row>
+                  <LinesChart data={scorePerMonth} />
+                </Row>
               </Col>
               <Col xs={4} md={4}>
                 <Row>
-                  <p>At a glance 2017</p>
+                  <span class="ether-rewards-title">At a glance 2017</span>
                 </Row>
                 <Row>
                   <Insights data={scorePerMonth} />
@@ -396,7 +399,7 @@ export default class Dashboard extends Component {
               </Col>
             </Row>
           </Col>
-          <Col xs={6} md={3}>
+          <Col xs={6} md={3} className={'ether-rewards-summary'}>
             <Row>
               <Col xs={12} md={12}>
                 <span className={'ether-rewards'}>+1.6 eth</span>
@@ -405,15 +408,27 @@ export default class Dashboard extends Component {
             </Row>
             <Row>
               <Col xs={12} md={12}>
-                <SpiderChart data={scoreGoals} />
+                <SpiderChart data={scorePerDay} x={'day'} y={'value'} />
               </Col>
             </Row>
             <Row>
-              <Row>
-                Monthly goals
-              </Row>
+              <Col xs={12} md={12}>
+                <span className={'ether-rewards-title'}>Monthly goals</span>
+              </Col>
               <Row>
                 <MonthlyGoals data={scoreGoals}/>
+              </Row>
+            </Row>
+            <Row>
+              <Col xs={12} md={12}>
+                <span className={'ether-rewards-title'}>Statistics</span>
+              </Col>
+              <Row>
+              <CategoryPercentage period={'day'} horizontal data={scorePerDay} barRatio={0.5} cornerRadius={5} x={'day'} y={'value'} style={{
+                  data: {
+                    fill: (d) => d.x === 7 ? '#0c9bf9' : 'gray',
+                  }
+                }} />
               </Row>
             </Row>
             <Row>
