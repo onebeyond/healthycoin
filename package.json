@@ -24,9 +24,9 @@
     "chai": "4.1.2",
     "chart.js": "^2.7.2",
     "fs-extra": "5.0.0",
-    "ganache-cli": "6.1.0",
+    "ganache-cli": "6.1.4",
     "mocha": "5.1.0",
-    "next": "5.1.0",
+    "next": "8.0.0",
     "next-routes": "1.4.1",
     "node-sass": "4.8.3",
     "react": "16.3.1",
@@ -37,6 +37,6 @@
     "solc": "0.4.21",
     "truffle-hdwallet-provider": "0.0.3",
     "victory": "0.25.7",
-    "web3": "1.0.0-beta.26"
+    "web3": "1.2.0"
   }
 }
